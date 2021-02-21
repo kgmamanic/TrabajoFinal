@@ -6,10 +6,10 @@ class Matricula
 {
     public:
         Matricula();
-
-    protected:
-
     private:
+        int nMatricula;
+        
+
 };
 
 #endif // MATRICULA_H

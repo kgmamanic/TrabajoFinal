@@ -17,6 +17,7 @@ void gotoxy(int x,int y){
 
 using namespace std;
 
+// Grafica un cuadro
 void cuadro(){
     gotoxy(8,8);
     cout<<"\311";
@@ -46,6 +47,7 @@ void cuadro(){
     cout<<endl<<endl;
 }
 
+// Implementa un menu, Recibe como Parámetros nombremenu( titulo del menu), opciones(arreglo de opciones), nopciones(cantidad de opciones)
 int Menu(string nombremenu, string opciones[], int nopciones){
     int tecla;
     bool repetir = true;

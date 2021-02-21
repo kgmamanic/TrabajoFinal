@@ -3,6 +3,7 @@
 #include <iostream>
 #include <conio.h>
 
+
 void gotoxy(int x,int y){  
       HANDLE hcon;  
       hcon = GetStdHandle(STD_OUTPUT_HANDLE);  
@@ -10,10 +11,23 @@ void gotoxy(int x,int y){
       dwPos.X = x;  
       dwPos.Y= y;  
       SetConsoleCursorPosition(hcon,dwPos);  
-} 
+}
+
+// Modifica el el cuadrito que parpadea al escribir
+void ModCursor(){
+    HANDLE hcon;
+    hcon = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO cci;
+    cci.dwSize = 100;
+    cci.bVisible = TRUE;
+    SetConsoleCursorInfo(hcon, &cci);
+}
+
+
 #define ARRIBA 72
 #define ABAJO 80
 #define ENTER 13
+
 
 using namespace std;
 
@@ -47,11 +61,14 @@ void cuadro(){
     cout<<endl<<endl;
 }
 
-// Implementa un menu, Recibe como Parámetros nombremenu( titulo del menu), opciones(arreglo de opciones), nopciones(cantidad de opciones)
+// Implementa un menu. Recibe como Parámetros nombremenu( titulo del menu), opciones(arreglo de opciones), nopciones(cantidad de opciones)
 int Menu(string nombremenu, string opciones[], int nopciones){
     int tecla;
     bool repetir = true;
     int flecha = 18, opcion = 1;
+    WORD Attributes = 0;
+    ModCursor();
+
     do{
         system("cls");
         cuadro();
@@ -79,7 +96,6 @@ int Menu(string nombremenu, string opciones[], int nopciones){
                 }
                 break;
             case ENTER:
-                cout<<"ENTER";
                 repetir = false;
                 break;
         }
@@ -87,11 +103,3 @@ int Menu(string nombremenu, string opciones[], int nopciones){
     return opcion;
 }
 
-void OcultarCursor(){
-    HANDLE hcon;
-    hcon = GetStdHandle(STD_OUTPUT_HANDLE);
-    CONSOLE_CURSOR_INFO cci;
-    cci.dwSize = 1;
-    cci.bVisible = FALSE;
-    SetConsoleCursorInfo(hcon, &cci);
-}

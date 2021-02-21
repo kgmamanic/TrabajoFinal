@@ -1,4 +1,7 @@
 {
     "liveshare.allowGuestDebugControl": true,
-    "liveshare.allowGuestTaskControl": true
+    "liveshare.allowGuestTaskControl": true,
+    "files.associations": {
+        "iostream": "cpp"
+    }
 }

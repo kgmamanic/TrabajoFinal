@@ -6,7 +6,7 @@ class Facultad
 {
     public:
         Facultad();
-
+        char* getNom();
     protected:
 
     private:

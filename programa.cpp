@@ -5,6 +5,9 @@
 
 using namespace std;
 
+
+
+
 int main(){
     string a;
     string b[5] = {"Estudiante" , "Postulante","Visualizar","Administrador","Salir"};

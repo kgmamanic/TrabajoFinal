@@ -3,6 +3,7 @@
 
 #include "Asignatura.h"
 #include "Estudiante.h"
+#include "Facultad.h"
 
 class Escuela
 {
@@ -11,12 +12,14 @@ class Escuela
         void AgregarAsi(Asignatura *A);
         void ModEscuela();
         int getVacantes();
+        char* getFacultad();
     private:
         Asignatura *asignaturas[];
         int nCursos;
         int nEstudiantes;
         Estudiante *Estudi[];
         int nVacantes;
+        Facultad *facultad;
 };
 
 #endif // ESCUELA_H

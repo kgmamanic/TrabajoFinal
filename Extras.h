@@ -11,8 +11,8 @@ void gotoxy(int x,int y){
       dwPos.Y= y;  
       SetConsoleCursorPosition(hcon,dwPos);  
 } 
-#define ARRIBA 
-#define ABAJO 
+#define ARRIBA 72
+#define ABAJO 80
 #define ENTER 13
 
 using namespace std;
@@ -46,17 +46,22 @@ void cuadro(){
     cout<<endl<<endl;
 }
 
-int Menu(){
+int Menu(/*string nombremenu, string opciones[], int nopciones*/){
     int tecla;
     bool repetir = true;
+    int nopciones = 1;
+    
     do{
+        //for(int i = 1; i <= nopciones ; i++){
+            gotoxy(48,48);
+            cout<<"MENU";
+        //}
         do{
             tecla = getch();
         }while(tecla != ARRIBA && tecla != ABAJO && tecla != ENTER );
         switch(tecla){
             case ARRIBA:
-                cout<<"ARRIBA";
-                break;
+                //gotoxy(48);
             case ABAJO:
                 cout<<"ABAJO";
                 break;
@@ -66,10 +71,14 @@ int Menu(){
                 break;
         }
     }while(repetir);
+    return 0;
 }
 
 void OcultarCursor(){
     HANDLE hcon;
     hcon = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleCursorInfo(hCon, )
+    CONSOLE_CURSOR_INFO cci;
+    cci.dwSize = 1;
+    cci.bVisible = FALSE;
+    SetConsoleCursorInfo(hcon, &cci);
 }

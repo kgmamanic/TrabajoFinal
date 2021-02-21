@@ -14,12 +14,12 @@ void gotoxy(int x,int y){
 }
 
 // Modifica el el cuadrito que parpadea al escribir
-void ModCursor(){
+void ModCursor(bool Mostrar){
     HANDLE hcon;
     hcon = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_CURSOR_INFO cci;
     cci.dwSize = 100;
-    cci.bVisible = TRUE;
+    cci.bVisible = Mostrar;
     SetConsoleCursorInfo(hcon, &cci);
 }
 
@@ -33,6 +33,7 @@ using namespace std;
 
 // Grafica un cuadro
 void cuadro(){
+    ModCursor(FALSE);
     gotoxy(8,8);
     cout<<"\311";
     // Linea Horizontal Sup
@@ -67,8 +68,6 @@ int Menu(string nombremenu, string opciones[], int nopciones){
     bool repetir = true;
     int flecha = 18, opcion = 1;
     WORD Attributes = 0;
-    ModCursor();
-
     do{
         system("cls");
         cuadro();
@@ -80,6 +79,7 @@ int Menu(string nombremenu, string opciones[], int nopciones){
         }
         gotoxy(48,flecha+opcion);
         do{
+            ModCursor(TRUE);
             tecla = getch();
         }while(tecla != ARRIBA && tecla != ABAJO && tecla != ENTER );
         switch(tecla){

@@ -14,8 +14,8 @@ int main(){
     string menuVisu[4] = {"Facultades", "Escuelas", "Resultados de Examenes"};
     bool NoSalir = true;
     int seleccion,seleccion2;
+    system("cls");
     do{    
-        system("cls");
         //cuadro();
         //system("pause");
         //getch();

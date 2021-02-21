@@ -50,8 +50,10 @@ int Menu(/*string nombremenu, string opciones[], int nopciones*/){
     int tecla;
     bool repetir = true;
     int nopciones = 1;
-    
+    int flecha = 48;
     do{
+        system("cls");
+        cuadro();
         //for(int i = 1; i <= nopciones ; i++){
             gotoxy(48,48);
             cout<<"MENU";
@@ -61,9 +63,9 @@ int Menu(/*string nombremenu, string opciones[], int nopciones*/){
         }while(tecla != ARRIBA && tecla != ABAJO && tecla != ENTER );
         switch(tecla){
             case ARRIBA:
-                //gotoxy(48);
+                gotoxy(48,flecha +1);
             case ABAJO:
-                cout<<"ABAJO";
+                gotoxy(48,flecha-1);
                 break;
             case ENTER:
                 cout<<"ENTER";

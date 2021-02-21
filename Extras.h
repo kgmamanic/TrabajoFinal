@@ -46,26 +46,35 @@ void cuadro(){
     cout<<endl<<endl;
 }
 
-int Menu(/*string nombremenu, string opciones[], int nopciones*/){
+int Menu(string nombremenu, string opciones[], int nopciones){
     int tecla;
     bool repetir = true;
-    int nopciones = 1;
-    int flecha = 48;
+    int flecha = 18, opcion = 1;
     do{
         system("cls");
         cuadro();
-        //for(int i = 1; i <= nopciones ; i++){
-            gotoxy(48,48);
-            cout<<"MENU";
-        //}
+        gotoxy(50,17);
+        cout<<nombremenu;
+        for(int i = 1; i <= nopciones ; i++){
+            gotoxy(50,18+i);
+            cout<<i<<". "<<opciones[i-1];
+        }
+        gotoxy(48,flecha+opcion);
         do{
             tecla = getch();
         }while(tecla != ARRIBA && tecla != ABAJO && tecla != ENTER );
         switch(tecla){
             case ARRIBA:
-                gotoxy(48,flecha +1);
+                opcion--;
+                if(opcion < 1){
+                    opcion = nopciones;
+                }
+                break;
             case ABAJO:
-                gotoxy(48,flecha-1);
+                opcion++;
+                if(opcion > nopciones){
+                    opcion = 1;
+                }
                 break;
             case ENTER:
                 cout<<"ENTER";
@@ -73,7 +82,7 @@ int Menu(/*string nombremenu, string opciones[], int nopciones*/){
                 break;
         }
     }while(repetir);
-    return 0;
+    return opcion;
 }
 
 void OcultarCursor(){

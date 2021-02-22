@@ -7,15 +7,18 @@ DatosPersona::DatosPersona()
     strcpy(nombre,"Sin nombre");    
 }
 
+// Constructor
 DatosPersona::DatosPersona(char n[],char c[]){
     strcpy(codigo,c);
     strcpy(nombre,n);
 }
 
+// Retorna Codigo
 char* DatosPersona::getcod(){
     return codigo;
 }
 
+// Retorna Nombre
 char* DatosPersona::getnombre(){
     return nombre;
 }

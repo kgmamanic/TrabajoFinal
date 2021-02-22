@@ -2,16 +2,25 @@
 #define ASIGNATURA_H
 
 #include "Escuela.h"
-#include "Facultad.h"
+#include "Estudiante.h"
 
 class Asignatura
 {
     public:
         Asignatura();
+        char *getNom();
+        void modAsignatura();
+        void agregarEstudiante(Estudiante *E);
+        char *getCod();
+
     private:
         char nombre[25];
         char codigo[6];
         Escuela *escuela;
+        Docente *docentes[3];
+        int nDocentes;
+        Estudiante* Alumnos[40];
+        int nAlumnos;
 
 };
 

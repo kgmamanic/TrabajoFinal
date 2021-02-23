@@ -1,7 +1,7 @@
 #ifndef POSTULANTE_H
 #define POSTULANTE_H
 
-class Escuela;
+//class Escuela;
 
 #include "DatosPersona.h"
 #include "Escuela.h"

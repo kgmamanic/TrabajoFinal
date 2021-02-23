@@ -2,12 +2,13 @@
 #include <string.h>
 
 Postulante::Postulante()
-{
+{/*
     strcpy(apellidos,"aaaaa");
     carrera = NULL;
     puntaje = 0;
     nOrden = 9999;
-    ingreso = false; 
+    ingreso = false;
+    */ 
 }
 
 Postulante::Postulante(char n[],char c[],char a[],Escuela *Ca,float p,int nO):DatosPersona(n,c){

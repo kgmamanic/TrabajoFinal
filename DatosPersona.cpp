@@ -3,8 +3,10 @@
 
 DatosPersona::DatosPersona()
 {
+    /*
     strcpy(codigo,"000000");
-    strcpy(nombre,"Sin nombre");    
+    strcpy(nombre,"Sin nombre");
+    */    
 }
 
 // Constructor

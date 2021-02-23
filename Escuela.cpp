@@ -4,9 +4,11 @@
 
 Escuela::Escuela()
 {
+    /*
     nCursos = 0;
     nEstudiantes = 0;
     nVacantes = 0;
+    */
 }
 
 // Agrega una asignatura a la escuela. Parametro: Puntero de asignatura

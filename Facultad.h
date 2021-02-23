@@ -8,8 +8,8 @@ class Facultad
         Facultad();
         char* getNom();
     protected:
-
-    private:
+        char nombre[20];
+        Escuela *escuelas[20];
 };
 
 #endif // FACULTAD_H

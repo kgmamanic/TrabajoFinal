@@ -27,7 +27,7 @@ void ModCursor(bool Mostrar){
 #define ARRIBA 72
 #define ABAJO 80
 #define ENTER 13
-
+#define RETROCESO 8
 
 using namespace std;
 
@@ -99,38 +99,32 @@ int Menu(string nombremenu, string opciones[], int nopciones){
         gotoxy(50,18+i);
         cout<<i<<". "<<opciones[i-1];
     }
-    do{/*
-        ModCursor(FALSE);
-        system("cls");
-        cuadro();
-        gotoxy(50,17);
-        cout<<nombremenu;
-        for(int i = 1; i <= nopciones ; i++){
-            gotoxy(50,18+i);
-            cout<<i<<". "<<opciones[i-1];
-        }*/
+    do{
         gotoxy(48,flecha+opcion);
         do{
             ModCursor(TRUE);
             tecla = getch();
             ModCursor(FALSE);
+            // Para actualizar la pantalla
+            if(tecla == RETROCESO){
+                // para actualizar la pantalla
+                ModCursor(FALSE);
+                system("cls");
+                cuadro();
+                gotoxy(50,17);
+                cout<<nombremenu;
+                for(int i = 1; i <= nopciones ; i++){
+                    gotoxy(50,18+i);
+                    cout<<i<<". "<<opciones[i-1];
+                }
+                gotoxy(48,flecha + opcion);
+            }
         }while(tecla != ARRIBA && tecla != ABAJO && tecla != ENTER );
         switch(tecla){
             case ARRIBA:
                 opcion--;
                 if(opcion < 1){
                     opcion = nopciones;
-                    // para actualizar la pantalla
-                    ModCursor(FALSE);
-                    system("cls");
-                    cuadro();
-                    gotoxy(50,17);
-                    cout<<nombremenu;
-                    for(int i = 1; i <= nopciones ; i++){
-                        gotoxy(50,18+i);
-                    cout<<i<<". "<<opciones[i-1];
-                    //
-                }
                 }
                 break;
             case ABAJO:
@@ -156,7 +150,7 @@ void clave(string &pass){
     letra = getch();
     pass = "";
     while(letra != ENTER){ // Escribir contraseña
-        if(letra != 8){ // 8 = retroceso
+        if(letra != RETROCESO){ // 8 = retroceso
             pass.push_back(letra);
             cout<< "*";
         }else{

@@ -1,6 +1,8 @@
 #ifndef ASIGNATURA_H
 #define ASIGNATURA_H
 
+#include"Escuela.h"
+#include"Estudiante.h"
 
 class Asignatura{
     private:

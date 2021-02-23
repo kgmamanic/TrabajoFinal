@@ -31,9 +31,3 @@ void Escuela::ModEscuela(){
 int Escuela::getVacantes(){
     return nVacantes;
 }
-
-
-// Retorna el nombre de la Facultad
-char* Escuela::getFacultad(){
-    return facultad->getNom();
-}

@@ -1,7 +1,7 @@
 #ifndef FACULTAD_H
 #define FACULTAD_H
 
-// Cabeceras
+#include "Escuela.h"
 
 
 class Facultad

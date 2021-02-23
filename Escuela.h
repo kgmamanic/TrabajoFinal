@@ -1,6 +1,7 @@
 #ifndef ESCUELA_H
 #define ESCUELA_H
 
+#include"Estudiante.h"
 
 class Escuela
 {
@@ -11,14 +12,12 @@ class Escuela
         int nEstudiantes;
         Estudiante *Estudi[20];
         int nVacantes;
-        Facultad *facultad;
     public:
         Escuela();
         char* getNombre();
         void AgregarAsi(Asignatura *Asi);
         void ModEscuela();
         int getVacantes();
-        char* getFacultad();
 
 };
 

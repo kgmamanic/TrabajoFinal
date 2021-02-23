@@ -1,7 +1,4 @@
 #include "Postulante.h"
-#include <string.h>
-#include "DatosPersona.h"
-#include "Escuela.h"
 
 Postulante::Postulante()
 {
@@ -11,9 +8,9 @@ Postulante::Postulante()
     //yaya
 }
 
-Postulante::Postulante(char n[],char c[],char a[],Escuela *Ca,float p,int nO):DatosPersona(n,c){
+Postulante::Postulante(char n[],char c[],char a[],char Ca[],float p,int nO):DatosPersona(n,c){
     strcpy(apellidos,a);
-    carrera = Ca;
+    strcpy(carrera,Ca);
     puntaje = p;
     nOrden = nO;
     if(nOrden <= carrera->getVacantes()){

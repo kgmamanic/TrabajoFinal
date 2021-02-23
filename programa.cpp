@@ -3,11 +3,11 @@
 #include <string>
 #include <fstream>
 
-
-//#include "Asignatura.h"
 #include "Extras.h"
-//#include "Escuela.h"
-#include "Postulante.h"
+
+#include"Escuela.h"
+#include"Facultad.h"
+#include"Postulante.h"
 
 using namespace std;
 

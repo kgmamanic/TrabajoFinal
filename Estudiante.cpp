@@ -2,6 +2,13 @@
 
 Estudiante::Estudiante()
 {
+    /*
+    strcpy(apellidos,"sin apellido");
+    strcpy(asignatura,"sin asignatura")
+    nCursos=0;
+    nMatricula=0;
+
+    */
     //ctor
 }
 
@@ -10,7 +17,7 @@ void Estudiante::agregarCursos(Asignatura *Asig){
     Cursos[nCursos] = Asig;
 }
 
-char* Estudiante::getContrase(){
+char* Estudiante::getcontrasena(){
     return contrasena;
 }
 
@@ -18,6 +25,9 @@ void Estudiante::agreMatricula(int n){
     nmatricula = n;
 }
 
-void modEstudiante(){
-    // con gotoxy y esas cosas :V 
+void modEstudiante(){   
+    /* 
+    -con gotoxy y esas cosas :V 
+    -qui lo hace esta funcion p ? :v
+    */
 }

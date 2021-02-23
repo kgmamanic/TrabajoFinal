@@ -1,22 +1,21 @@
 #ifndef ESTUDIANTE_H
 #define ESTUDIANTE_H
 
+#include"DatosPersona.h"
+#include"Asignatura.h"
 
-class Estudiante //: public DatosPersona
+class Estudiante: public DatosPersona
 {
     public:
         Estudiante();
         void agregarCursos(Asignatura *Asig);
-        char getcontrasena();
+        char* getcontrasena();
         void agreMatricula(int );
-        
+        void modEstudiante();
 
     private:
         char Apellidos[20];
-        /*
-    Escuela *escuela
-    Asignatura *Cursos[]
-    */
+        Asignatura *Cursos[];
         char contrasena[10];
         int nCursos;
         int nmatricula;

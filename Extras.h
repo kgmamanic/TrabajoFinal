@@ -89,6 +89,7 @@ int Menu(string nombremenu, string opciones[], int nopciones){
     int tecla;
     bool repetir = true;
     int flecha = 18, opcion = 1;
+    // imprime menu
     ModCursor(FALSE);
     system("cls");
     cuadro();

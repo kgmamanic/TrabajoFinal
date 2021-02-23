@@ -9,7 +9,7 @@ class Postulante: public DatosPersona
     private:
         int nOrden;
         char apellidos[25];
-        char carrera[20]; // No se si poner apuntador o normalito
+        char carrera[20]; 
         float puntaje;
         bool ingreso;
     public:

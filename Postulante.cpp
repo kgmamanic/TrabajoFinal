@@ -2,12 +2,7 @@
 #include <cstring>
 
 Postulante::Postulante()
-{
-    // no realizar constructores
-    //porque p ? :v
-    // porque su desarrollo no ayuda en nada :v los dejamos asi nomas con llaves 
-    //yaya
-    
+{    
 }
 
 Postulante::Postulante(char n[],char c[],char a[],char Ca[],float p,int nO):DatosPersona(n,c){

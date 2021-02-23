@@ -26,8 +26,5 @@ void Estudiante::agreMatricula(int n){
 }
 
 void modEstudiante(){   
-    /* 
-    -con gotoxy y esas cosas :V 
-    -qui lo hace esta funcion p ? :v
-    */
+    //-con gotoxy y esas cosas 
 }

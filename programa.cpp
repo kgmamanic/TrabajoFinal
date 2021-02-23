@@ -3,6 +3,7 @@
 #include <string>
 #include <fstream>
 
+
 #include "Asignatura.h"
 #include "Extras.h"
 #include "Escuela.h"
@@ -15,7 +16,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
 
 int main(){
     // Declaracion de los objetos
-    Postulante PPos[0];
+    Postulante PPos[10];
     Asignatura AAsi[0];
     Escuela EEsc[0];
     Facultad FFacu[0];

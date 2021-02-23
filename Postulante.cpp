@@ -3,8 +3,6 @@
 
 Postulante::Postulante()
 {
-    strcpy(codigo,"000000");
-    strcpy(nombre,"Sin nombre");    
     strcpy(apellidos,"aaaaa");
     carrera = NULL;
     puntaje = 0;

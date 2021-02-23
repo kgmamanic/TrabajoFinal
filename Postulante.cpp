@@ -3,7 +3,13 @@
 
 Postulante::Postulante()
 {
-    ingreso = false;
+    strcpy(codigo,"000000");
+    strcpy(nombre,"Sin nombre");    
+    strcpy(apellidos,"aaaaa");
+    carrera = NULL;
+    puntaje = 0;
+    nOrden = 9999;
+    ingreso = false; 
 }
 
 Postulante::Postulante(char n[],char c[],char a[],Escuela *Ca,float p,int nO):DatosPersona(n,c){

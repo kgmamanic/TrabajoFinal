@@ -1,6 +1,8 @@
 #ifndef ESCUELA_H
 #define ESCUELA_H
 
+class Asignatura;
+
 #include "Asignatura.h"
 #include "Estudiante.h"
 #include "Facultad.h"
@@ -14,10 +16,10 @@ class Escuela
         int getVacantes();
         char* getFacultad();
     private:
-        Asignatura *asignaturas[];
+        Asignatura *asignaturas[20];
         int nCursos;
         int nEstudiantes;
-        Estudiante *Estudi[];
+        Estudiante *Estudi[20];
         int nVacantes;
         Facultad *facultad;
 };

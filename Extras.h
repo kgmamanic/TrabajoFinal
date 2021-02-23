@@ -3,7 +3,7 @@
 #include <iostream>
 #include <conio.h>
 
-
+// mueve el cursor a una lugar especifico
 void gotoxy(int x,int y){  
       HANDLE hcon;  
       hcon = GetStdHandle(STD_OUTPUT_HANDLE);  
@@ -60,6 +60,28 @@ void cuadro(){
         cout<<"\272";
     }
     cout<<endl<<endl;
+    ModCursor(TRUE);
+}
+
+// Grafica un pequeño rectangulo x + cantidad de texto  | y-1
+void Pequecuadro(int x, int y){
+    ModCursor(FALSE);
+    gotoxy(x,y); cout<<"\311";
+    // Linea horizontal Sup
+    for(int i = 1; i < 30 ; i++){
+        cout<<"\315";
+    }
+    gotoxy(x,y+1); cout<<"\272";
+    gotoxy(x,y+2); cout<<"\310";
+    // Linea Inferior Sub
+    for(int i = 1; i < 30 ; i++){
+        cout<<"\315";
+    }
+    gotoxy(x+29,y); cout<<"\273";
+    gotoxy(x+29,y+1); cout<<"\272";
+    gotoxy(x+29, y+2); cout<<"\274";
+    gotoxy(x+1,y+1); // vuelve a la posicion inicial para escribir 
+    ModCursor(TRUE);
 }
 
 // Implementa un menu. Recibe como Parámetros nombremenu( titulo del menu), opciones(arreglo de opciones), nopciones(cantidad de opciones)
@@ -67,8 +89,8 @@ int Menu(string nombremenu, string opciones[], int nopciones){
     int tecla;
     bool repetir = true;
     int flecha = 18, opcion = 1;
-    WORD Attributes = 0;
     do{
+        ModCursor(FALSE);
         system("cls");
         cuadro();
         gotoxy(50,17);
@@ -81,6 +103,7 @@ int Menu(string nombremenu, string opciones[], int nopciones){
         do{
             ModCursor(TRUE);
             tecla = getch();
+            ModCursor(FALSE);
         }while(tecla != ARRIBA && tecla != ABAJO && tecla != ENTER );
         switch(tecla){
             case ARRIBA:
@@ -103,3 +126,24 @@ int Menu(string nombremenu, string opciones[], int nopciones){
     return opcion;
 }
 
+#define admin "admin"
+#define password "lagarto"
+
+// Forma de escribir en "*" como una contraseña" 
+void clave(string &pass){
+    char letra;
+    letra = getch();
+    pass = "";
+    while(letra != ENTER){ // Escribir contraseña
+        if(letra != 8){ // 8 = retroceso
+            pass.push_back(letra);
+            cout<< "*";
+        }else{
+            if(pass.length() >0){
+                cout<<"\b \b";
+                pass = pass.substr(0,pass.length()-1);
+            }
+        }
+        letra = getch();
+    }
+}

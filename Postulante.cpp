@@ -1,4 +1,5 @@
 #include "Postulante.h"
+#include <cstring>
 
 Postulante::Postulante()
 {
@@ -6,6 +7,7 @@ Postulante::Postulante()
     //porque p ? :v
     // porque su desarrollo no ayuda en nada :v los dejamos asi nomas con llaves 
     //yaya
+    
 }
 
 Postulante::Postulante(char n[],char c[],char a[],char Ca[],float p,int nO):DatosPersona(n,c){
@@ -13,12 +15,6 @@ Postulante::Postulante(char n[],char c[],char a[],char Ca[],float p,int nO):Dato
     strcpy(carrera,Ca);
     puntaje = p;
     nOrden = nO;
-    if(nOrden <= carrera->getVacantes()){
-        ingreso = true;
-        Ingresante();
-    }else{
-        ingreso = false;
-    }
 }
 
 // Se usara para saber si algun postulante ingreso o no

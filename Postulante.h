@@ -1,6 +1,7 @@
 #ifndef POSTULANTE_H
 #define POSTULANTE_H
 
+
 #include"DatosPersona.h"
 
 class Postulante: public DatosPersona
@@ -18,4 +19,5 @@ class Postulante: public DatosPersona
 
 };
 
+#include"Postulante.cpp"
 #endif // POSTULANTE_H

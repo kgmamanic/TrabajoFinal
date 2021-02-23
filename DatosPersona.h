@@ -14,4 +14,6 @@ class DatosPersona
         char codigo[6];
 };
 
+#include "DatosPersona.cpp"
+
 #endif // DATOSPERSONA_H

@@ -15,7 +15,7 @@ class Estudiante: public DatosPersona
 
     private:
         char Apellidos[20];
-        Asignatura *Cursos[];
+        Asignatura *Cursos[9];
         char contrasena[10];
         int nCursos;
         int nmatricula;

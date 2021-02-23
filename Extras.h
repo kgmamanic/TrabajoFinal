@@ -89,7 +89,16 @@ int Menu(string nombremenu, string opciones[], int nopciones){
     int tecla;
     bool repetir = true;
     int flecha = 18, opcion = 1;
-    do{
+    ModCursor(FALSE);
+    system("cls");
+    cuadro();
+    gotoxy(50,17);
+    cout<<nombremenu;
+    for(int i = 1; i <= nopciones ; i++){
+        gotoxy(50,18+i);
+        cout<<i<<". "<<opciones[i-1];
+    }
+    do{/*
         ModCursor(FALSE);
         system("cls");
         cuadro();
@@ -98,7 +107,7 @@ int Menu(string nombremenu, string opciones[], int nopciones){
         for(int i = 1; i <= nopciones ; i++){
             gotoxy(50,18+i);
             cout<<i<<". "<<opciones[i-1];
-        }
+        }*/
         gotoxy(48,flecha+opcion);
         do{
             ModCursor(TRUE);
@@ -110,6 +119,17 @@ int Menu(string nombremenu, string opciones[], int nopciones){
                 opcion--;
                 if(opcion < 1){
                     opcion = nopciones;
+                    // para actualizar la pantalla
+                    ModCursor(FALSE);
+                    system("cls");
+                    cuadro();
+                    gotoxy(50,17);
+                    cout<<nombremenu;
+                    for(int i = 1; i <= nopciones ; i++){
+                        gotoxy(50,18+i);
+                    cout<<i<<". "<<opciones[i-1];
+                    //
+                }
                 }
                 break;
             case ABAJO:

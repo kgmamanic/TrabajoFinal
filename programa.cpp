@@ -3,7 +3,6 @@
 #include <string>
 #include <fstream>
 
-#include "Extras.h"
 
 #include"Escuela.h"
 #include"Facultad.h"
@@ -11,12 +10,14 @@
 
 using namespace std;
 
+#include"Extras.h"
 // Recibe como parametros los contadores de cada clase
 void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante estu[],Postulante postu[],int &F,int &Esc, int &A,int &Est,int &P);
 
+
 int main(){
     // Declaracion de los objetos
-    Postulante PPos[10];
+    Postulante PPos[1];
     Asignatura AAsi[0];
     Escuela EEsc[0];
     Facultad FFacu[0];
@@ -112,7 +113,9 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     system("cls");
                     cuadro();
                     gotoxy(55,17); cout<<"AGREGAR ESTUDIANTE";
-                    cout<<"Nombre:"; Pequecuadro(62,16);
+                    gotoxy(55,20);
+                    cout<<"Nombre:"; Pequecuadro(62,19);
+                    fflush(stdin); cin.getline(nombre,20);
                     /*fstream Postulantes("/Data/Postulantes.dat",ios::binary|ios::in|ios::out);
                     if(Postulantes.is_open()){
                         while(seguir){

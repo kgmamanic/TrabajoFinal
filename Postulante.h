@@ -1,10 +1,6 @@
 #ifndef POSTULANTE_H
 #define POSTULANTE_H
 
-//class Escuela;
-
-#include "DatosPersona.h"
-#include "Escuela.h"
 
 class Postulante: public DatosPersona
 {

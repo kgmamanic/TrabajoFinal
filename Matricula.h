@@ -6,6 +6,7 @@ class Matricula
 {
     public:
         Matricula();
+        int getMatricula();
     private:
         int nMatricula;
         

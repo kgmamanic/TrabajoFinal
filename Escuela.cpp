@@ -11,6 +11,10 @@ Escuela::Escuela()
     */
 }
 
+char* Escuela::getNombre(){
+    return Nombre;
+}
+
 // Agrega una asignatura a la escuela. Parametro: Puntero de asignatura
 void Escuela::AgregarAsi(Asignatura *A){
     nCursos++;

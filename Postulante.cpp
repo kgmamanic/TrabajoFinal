@@ -1,14 +1,14 @@
 #include "Postulante.h"
 #include <string.h>
+#include "DatosPersona.h"
+#include "Escuela.h"
 
 Postulante::Postulante()
-{/*
-    strcpy(apellidos,"aaaaa");
-    carrera = NULL;
-    puntaje = 0;
-    nOrden = 9999;
-    ingreso = false;
-    */ 
+{
+    // no realizar constructores
+    //porque p ? :v
+    // porque su desarrollo no ayuda en nada :v los dejamos asi nomas con llaves 
+    //yaya
 }
 
 Postulante::Postulante(char n[],char c[],char a[],Escuela *Ca,float p,int nO):DatosPersona(n,c){

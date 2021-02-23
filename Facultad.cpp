@@ -10,4 +10,13 @@ Facultad::Facultad()
     */
 }
 
+char* Facultad::getNom(){
+    return nombre;
+}
+
+void Facultad::mostrarEscuelas(){
+    for(int i = 1; i <= nEscuelas ; i++){
+        cout<<i<<". "<<escuelas[i].getNombre();
+    }
+}
 

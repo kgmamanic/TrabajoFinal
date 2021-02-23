@@ -2,13 +2,10 @@
 #define ESCUELA_H
 
 
-#include "Asignatura.h"
-#include "Estudiante.h"
-#include "Facultad.h"
-
 class Escuela
 {
     private:
+        char Nombre[20];
         Asignatura *asignaturas[20];
         int nCursos;
         int nEstudiantes;
@@ -17,7 +14,8 @@ class Escuela
         Facultad *facultad;
     public:
         Escuela();
-        void AgregarAsi(Asignatura *A);
+        char* getNombre();
+        void AgregarAsi(Asignatura *Asi);
         void ModEscuela();
         int getVacantes();
         char* getFacultad();

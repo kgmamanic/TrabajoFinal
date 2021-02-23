@@ -4,9 +4,9 @@
 #include <fstream>
 
 
-#include "Asignatura.h"
+//#include "Asignatura.h"
 #include "Extras.h"
-#include "Escuela.h"
+//#include "Escuela.h"
 #include "Postulante.h"
 
 using namespace std;

@@ -8,14 +8,16 @@ class Postulante: public DatosPersona
 {
     private:
         int nOrden;
-        char apellidos[25];
+        char apellidos[30];
         char carrera[20]; 
         float puntaje;
         bool ingreso;
     public:
         Postulante();
-        Postulante(char n[],char c[],char a[],char Ca[],float p,int nO);
+        Postulante(char* n,char* c,char* a,char* Ca,float p);
         bool Ingresante();
+        void mostrar();
+        bool operator<(Postulante P);
 
 };
 

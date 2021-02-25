@@ -3,7 +3,7 @@
 #include <string>
 #include <fstream>
 
-
+#include "ordenador.h"
 #include"Escuela.h"
 #include"Facultad.h"
 #include"Postulante.h"
@@ -17,7 +17,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
 
 int main(){
     // Declaracion de los objetos
-    Postulante PPos[0];
+    Postulante PPos[50];
     Asignatura AAsi[0];
     Escuela EEsc[0];
     Facultad FFacu[0];
@@ -40,11 +40,13 @@ int main(){
         titulomenu = opcionesmenu[seleccion-1];
         switch(seleccion){
             case 1:
+            // Solicitara usuario y contraseña usuario:(SIGLAS DE ESCUELA)+(codigo)
                 break;
             case 2:
-
+                // 2 opciones buscar por nombre y la otra ver lista completa
                 break;
             case 3:
+                // se usara para mostrar datos generales de las escuelas y facultades
                 seleccion2 = Menu(titulomenu,menuVisu,4);
                 switch(seleccion2){
                     case 1:
@@ -87,7 +89,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
     system("cls");
     bool seguir();
     // Variables Temporales
-    char nombre[20],apellido[25],codigo[3];
+    char nombre[20],apellido[30],codigo[7];
     float puntaje;
     // menus
     string nombremenu = "Bienvenido, Administrador";
@@ -109,8 +111,6 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                 case 3:
                 case 4:
                 case 5: // Agregar Postulante
-                    P++; // contador de postulantes
-                    Postulante postu[P]; 
                     system("cls");
                     cuadro();
                     gotoxy(55,17); cout<<"AGREGAR ESTUDIANTE";
@@ -118,26 +118,27 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     cout<<"Nombre:"; Pequecuadro(47,19);
                     gotoxy(37,23);
                     cout<<"Apellidos:"; Pequecuadro(47,22);
-                    gotoxy(40,26);
-                    cout<<"Codigo:"; Pequecuadro(47,25);
+                    gotoxy(28,26);
+                    cout<<"Codigo(Ejm 000000):"; Pequecuadro(47,25);
                     gotoxy(39,29);
                     cout<<"Puntaje:"; Pequecuadro(47,28);
                     // Ingresar Datos
                     gotoxy(48,20);
                     fflush(stdin); cin.getline(nombre,20); // nombre
                     gotoxy(48,23);
-                    fflush(stdin); cin.getline(apellido,25); // apellidos
+                    fflush(stdin); cin.getline(apellido,30); // apellidos
                     gotoxy(48,26);
-                    fflush(stdin); cin.getline(codigo,4);
+                    strcat(codigo,"AAA");
+                    fflush(stdin); cin.getline(codigo,sizeof(codigo));
                     gotoxy(48,29);
                     fflush(stdin); cin>>puntaje;
-                    /*fstream Postulantes("/Data/Postulantes.dat",ios::binary|ios::in|ios::out);
-                    if(Postulantes.is_open()){
-                        while(seguir){
-                            cuadro();
-                            gotoxy(55,17);
-                        }
-                    }*/
+                    P = P+1; // contador de postulantes                    
+                    char AAA[] = "ESIS"; // eliminar 
+                    Postulante postutemp(nombre,codigo,apellido,AAA,puntaje);
+                    postu[P] = postutemp;
+                    // Ordena los postulantes
+                    quickshortDes(postu,P);
+                    administrador(Facu,escu,asig,estu,postu,F,Esc,A,Est,P);
                     break;
             }
             break;

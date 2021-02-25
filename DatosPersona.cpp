@@ -10,7 +10,7 @@ DatosPersona::DatosPersona()
 }
 
 // Constructor
-DatosPersona::DatosPersona(char n[],char c[]){
+DatosPersona::DatosPersona(char* n,char* c){
     strcpy(codigo,c);
     strcpy(nombre,n);
 }

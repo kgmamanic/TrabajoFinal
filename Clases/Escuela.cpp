@@ -34,3 +34,8 @@ int Escuela::getVacantes(){
 char* Escuela::getSiglas(){
     return Siglas;
 }
+
+std::ostream & operator <<(std::ostream & escribir,Escuela & obj){
+    escribir<<obj.getNombre();
+    return escribir;
+}

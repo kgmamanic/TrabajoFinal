@@ -132,8 +132,8 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     fflush(stdin); cin.getline(pass,20);
                     // Seleccionar Escuela todavia
                     system("cls");
-                    nSEscuela = Menu("Seleccion Escuela",escu,Esc);
-                    Estudiante Estutemp(nombre,apellido,codigo,escu[nSEscuela].getSiglas(),pass);
+                    nSEscuela = MenuEF("Seleccione la Escuela",escu,Esc);
+                    //Estudiante Estutemp(nombre,apellido,codigo,escu[nSEscuela].getSiglas(),pass);
                     
                     break;
                 case 5: // Agregar Postulante  - Desarrollado

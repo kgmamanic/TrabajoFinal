@@ -1,4 +1,5 @@
 #include "Estudiante.h"
+#include <iostream>
 
 Estudiante::Estudiante()
 {
@@ -30,3 +31,4 @@ void Estudiante::agreMatricula(int n){
 void Estudiante::modEstudiante(){   
     //-con gotoxy y esas cosas 
 }
+

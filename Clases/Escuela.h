@@ -20,6 +20,9 @@ class Escuela
         void ModEscuela();
         int getVacantes();
         char* getSiglas();
+        friend std::ostream & operator <<(std::ostream & escribir,Escuela & obj);
 };
+
+#include "Escuela.cpp"
 
 #endif // ESCUELA_H

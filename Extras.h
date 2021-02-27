@@ -143,7 +143,7 @@ int Menu(string nombremenu, string opciones[], int nopciones){
 
 
 template <class a>
-int Menu(string nombremenu, a opciones[], int nopciones){
+int MenuEF(string nombremenu, a opciones[], int nopciones){
     int tecla;
     bool repetir = true;
     int flecha = 18, opcion = 1;

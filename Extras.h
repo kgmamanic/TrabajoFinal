@@ -141,7 +141,7 @@ int Menu(string nombremenu, string opciones[], int nopciones){
     return opcion;
 }
 
-
+// menu de Escuelas y Facultades
 template <class a>
 int MenuEF(string nombremenu, a opciones[], int nopciones){
     int tecla;

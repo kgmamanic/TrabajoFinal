@@ -10,9 +10,14 @@ DatosPersona::DatosPersona()
 }
 
 // Constructor
-DatosPersona::DatosPersona(char* n,char* c){
+DatosPersona::DatosPersona(char* n,char *a,char* c,char * S){
     strcpy(codigo,c);
     strcpy(nombre,n);
+    strcpy(EsSiglas,S);
+    strcpy(apellidos,a);
+}
+char* DatosPersona::getApe(){
+    return apellidos;
 }
 
 // Retorna Codigo
@@ -23,4 +28,8 @@ char* DatosPersona::getcod(){
 // Retorna Nombre
 char* DatosPersona::getnombre(){
     return nombre;
+}
+
+char* DatosPersona::obtenerSiglas(){
+    return EsSiglas;
 }

@@ -11,7 +11,9 @@ Estudiante::Estudiante()
     */
     //ctor
 }
-
+Estudiante::Estudiante(char* n,char* a,char* c, char* S, char* contra):DatosPersona(n,a,c,S){
+    strcpy(contrasena,contra);
+}
 void Estudiante::agregarCursos(Asignatura *Asig){
     nCursos++;
     Cursos[nCursos] = Asig;
@@ -25,6 +27,6 @@ void Estudiante::agreMatricula(int n){
     nmatricula = n;
 }
 
-void modEstudiante(){   
+void Estudiante::modEstudiante(){   
     //-con gotoxy y esas cosas 
 }

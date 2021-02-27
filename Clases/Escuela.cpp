@@ -31,3 +31,6 @@ void Escuela::ModEscuela(){
 int Escuela::getVacantes(){
     return nVacantes;
 }
+char* Escuela::getSiglas(){
+    return Siglas;
+}

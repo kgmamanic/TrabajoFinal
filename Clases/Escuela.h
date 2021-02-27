@@ -12,13 +12,14 @@ class Escuela
         int nEstudiantes;
         Estudiante *Estudi[20];
         int nVacantes;
+        char Siglas[5];
     public:
         Escuela();
         char* getNombre();
         void AgregarAsi(Asignatura *Asi);
         void ModEscuela();
         int getVacantes();
-
+        char* getSiglas();
 };
 
 #endif // ESCUELA_H

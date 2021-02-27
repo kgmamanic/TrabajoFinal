@@ -141,6 +141,65 @@ int Menu(string nombremenu, string opciones[], int nopciones){
     return opcion;
 }
 
+
+template <class a>
+int Menu(string nombremenu, a opciones[], int nopciones){
+    int tecla;
+    bool repetir = true;
+    int flecha = 18, opcion = 1;
+    // imprime menu
+    ModCursor(FALSE);
+    system("cls");
+    cuadro();
+    gotoxy(50,17);
+    cout<<nombremenu;
+    for(int i = 1; i <= nopciones ; i++){
+        gotoxy(50,18+i);
+        cout<<i<<". "<<opciones[i];
+    }
+    do{
+        gotoxy(48,flecha+opcion);
+        do{
+            ModCursor(TRUE);
+            tecla = getch();
+            ModCursor(FALSE);
+            // Para actualizar la pantalla
+            if(tecla == RETROCESO){
+                // para actualizar la pantalla
+                ModCursor(FALSE);
+                system("cls");
+                cuadro();
+                gotoxy(50,17);
+                cout<<nombremenu;
+                for(int i = 1; i <= nopciones ; i++){
+                    gotoxy(50,18+i);
+                    cout<<i<<". "<<opciones[i];
+                }
+                gotoxy(48,flecha + opcion);
+            }
+        }while(tecla != ARRIBA && tecla != ABAJO && tecla != ENTER );
+        switch(tecla){
+            case ARRIBA:
+                opcion--;
+                if(opcion < 1){
+                    opcion = nopciones;
+                }
+                break;
+            case ABAJO:
+                opcion++;
+                if(opcion > nopciones){
+                    opcion = 1;
+                }
+                break;
+            case ENTER:
+                repetir = false;
+                break;
+        }
+    }while(repetir);
+    return opcion;
+}
+
+
 #define admin "admin"
 #define password "lagarto"
 

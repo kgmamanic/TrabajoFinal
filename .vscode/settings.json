@@ -3,5 +3,6 @@
     "liveshare.allowGuestTaskControl": true,
     "files.associations": {
         "iostream": "cpp"
-    }
+    },
+    "terminal.explorerKind": "external"
 }

@@ -5,8 +5,7 @@ Postulante::Postulante()
 {    
 }
 
-Postulante::Postulante(char* n,char* c,char* a,char* Ca,float p):DatosPersona(n,c){
-    strcpy(apellidos,a);
+Postulante::Postulante(char* n,char* c,char* S,char* a,char* Ca,float p):DatosPersona(n,a,c,S){
     strcpy(carrera,Ca);
     puntaje = p;
 }
@@ -17,7 +16,7 @@ bool Postulante::Ingresante(){
 }
 
 void Postulante::mostrar(){
-    std::cout<<getnombre()<<apellidos<<" "<<getcod()<<carrera<<" "<<puntaje;
+    std::cout<<getnombre()<<getApe()<<" "<<getcod()<<carrera<<" "<<puntaje;
 }
 
 bool Postulante:: operator<(Postulante P){

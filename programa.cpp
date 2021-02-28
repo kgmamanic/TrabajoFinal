@@ -17,11 +17,11 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
 
 int main(){
     // Declaracion de los objetos
-    Postulante PPos[50];
-    Asignatura AAsi[0];
-    Escuela EEsc[0];
-    Facultad FFacu[0];
-    Estudiante EEstu[0];
+    Postulante PPos[100];
+    Asignatura AAsi[100];
+    Escuela EEsc[100];
+    Facultad FFacu[100];
+    Estudiante EEstu[100];
     // Declaracion de Contadores
     int contP=0,contA=0,contEsc=0,contF=0,contEst=0;
     
@@ -85,12 +85,13 @@ int main(){
 }
 
 void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante estu[],Postulante postu[],int &F,int &Esc, int &A,int &Est,int &P){
-    int opcion,opcion2,nSEscuela;
+    int opcion,opcion2,nSEscuela,nFacu,variabletemp=5; 
     system("cls");
     bool seguir();
     // Variables Temporales
-    char nombre[20],apellido[30],codigo[7],pass[15],SEscuela[5];
+    char nombre[20],apellido[30],codigo[7],pass[15],SSiglas[5],Docentes[3][40];
     float puntaje;
+    int nDocentes;
     // menus
     string nombremenu = "Bienvenido, Administrador";
     string opciones[] = {"Modificar","Eliminar","Agregar","Volver"};
@@ -107,9 +108,60 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
             opcion2 = Menu("ADMINISTRADOR: Agregar", op2, 6);
             switch(opcion2){
                 case 1: // agregar facultades
-                case 2: // agregar escuelas
+                    system("cls");
+                    cuadro();
+                    gotoxy(55,17);cout<<"AGREGAR FACULTAD";
+                    gotoxy(40,20);
+                    cout<<"Nombre:";Pequecuadro(47,19);
+                    gotoxy(48,20);
+                    fflush(stdin); cin.getline(nombre,20);
+                    F = F+1;
+                    Facu[F].asignarDatos(nombre);
+                    gotoxy(35,25);cout<<"FACULTAD CREADA CON EXITO..";
+                    gotoxy(35,26);cout<<"Cree una Escuela para la Facultad";
+                    Sleep(2000);
+                    Facu[F].crearEscuela(escu,Esc);
+                    break;
+                case 2: // agregar escuelas - DESARROLLADO
+                    nFacu = MenuEF("Crear Escuela: SELECCION FACULTAD", Facu,F);
+                    Facu[nFacu].crearEscuela(escu,Esc);
+                    break;
+
                 case 3:// agregar asignaturas
-                case 4: // Agregar Estudiante
+                    system("cls");
+                    cuadro();
+                    gotoxy(55,17);
+                    cout<<"AGREGAR ASIGNATURA";
+                    gotoxy(40,20);
+                    cout<<"Nombre:";Pequecuadro(47,19);
+                    gotoxy(40,23);
+                    cout<<"Codigo:";Pequecuadro(47,22);
+                    gotoxy(35,26);
+                    cout<<"N° Docentes:";Pequecuadro(47,25);
+                    // ingresar datos
+                    gotoxy(48,20);
+                    fflush(stdin);cin.getline(nombre,20);
+                    gotoxy(48,23);
+                    fflush(stdin);cin.getline(codigo,7);
+                    gotoxy(48,26);
+                    cin>>nDocentes;
+                    system("cls");
+                    cuadro();
+                    gotoxy(55,17);
+                    cout<<"DOCENTES: "<<nombre;
+                    for(int i = 0; i <nDocentes; i++){
+                        if((nDocentes-1) == i){
+                            gotoxy(38,variabletemp);
+                            cout<<"Nombre N°"<<i; Pequecuadro(47,variabletemp-1);
+                            gotoxy(48,variabletemp);
+                            fflush(stdin);cin.getline(Docentes[i],40);
+                            variabletemp = variabletemp +3;
+                        }
+                    }
+                    A = A+1;
+                    asig[A].asignarDatos(nombre,codigo,Docentes,nDocentes);
+                    break;
+                case 4: // Agregar Estudiante - FALTA
                     system("cls");
                     cuadro(); 
                     gotoxy(55,17); cout<<"AGREGAR ESTUDIANTE";
@@ -118,7 +170,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     gotoxy(37,23);
                     cout<<"Apellidos:"; Pequecuadro(47,22);
                     gotoxy(28,26);
-                    cout<<"Codigo:(Ejm 000000):";Pequecuadro(47,25);
+                    cout<<"Codigo:(Ejm 20-001):";Pequecuadro(47,25);
                     gotoxy(36,29);
                     cout<<"Contrase\244a:";Pequecuadro(47,28);
                     // ingresar datos
@@ -133,8 +185,8 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     // Seleccionar Escuela todavia
                     system("cls");
                     nSEscuela = MenuEF("Seleccione la Escuela",escu,Esc);
-                    //Estudiante Estutemp(nombre,apellido,codigo,escu[nSEscuela].getSiglas(),pass);
-                    
+                    Est = Est +1;
+                    estu[Est].asignarDatos(nombre,apellido,codigo,escu[nSEscuela].getSiglas(),pass);
                     break;
                 case 5: // Agregar Postulante  - Desarrollado
                     system("cls");
@@ -145,7 +197,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     gotoxy(37,23);
                     cout<<"Apellidos:"; Pequecuadro(47,22);
                     gotoxy(28,26);
-                    cout<<"Codigo(Ejm 000000):"; Pequecuadro(47,25);
+                    cout<<"Codigo(Ejm 100001):"; Pequecuadro(47,25);
                     gotoxy(39,29);
                     cout<<"Puntaje:"; Pequecuadro(47,28);
                     // Ingresar Datos
@@ -160,8 +212,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     fflush(stdin); cin>>puntaje;
                     P = P+1; // contador de postulantes                    
                     char AAA[] = "ESIS"; // eliminar 
-                    Postulante postutemp(nombre,codigo,AAA,apellido,AAA,puntaje);
-                    postu[P] = postutemp;
+                    postu[P].asignarDatos(nombre,codigo,AAA,apellido,AAA,puntaje);
                     // Ordena los postulantes
                     quickshortDes(postu,P);
                     administrador(Facu,escu,asig,estu,postu,F,Esc,A,Est,P);
@@ -173,4 +224,3 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
 }
 
 //  g++ -o programa.exe programa.cpp
-//pipipi

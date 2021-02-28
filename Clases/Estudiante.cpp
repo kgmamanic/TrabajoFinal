@@ -12,7 +12,8 @@ Estudiante::Estudiante()
     */
     //ctor
 }
-Estudiante::Estudiante(char* n,char* a,char* c, char* S, char* contra):DatosPersona(n,a,c,S){
+void Estudiante::asignarDatos(char* n,char* a,char* c, char* S, char* contra){
+    asigDatos(n,a,c,S);
     strcpy(contrasena,contra);
 }
 void Estudiante::agregarCursos(Asignatura *Asig){

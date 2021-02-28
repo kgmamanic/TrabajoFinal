@@ -9,8 +9,8 @@ DatosPersona::DatosPersona()
     */    
 }
 
-// Constructor
-DatosPersona::DatosPersona(char* n,char *a,char* c,char * S){
+// asigna datos
+void DatosPersona::asigDatos(char* n,char *a,char* c,char * S){
     strcpy(codigo,c);
     strcpy(nombre,n);
     strcpy(EsSiglas,S);

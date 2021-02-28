@@ -2,7 +2,6 @@
 #define ESCUELA_H
 
 #include"Estudiante.h"
-
 class Escuela
 {
     private:
@@ -17,9 +16,9 @@ class Escuela
         Escuela();
         char* getNombre();
         void AgregarAsi(Asignatura *Asi);
-        void ModEscuela();
         int getVacantes();
         char* getSiglas();
+        void asignarDatos(char *n,int nV,char* S);
         friend std::ostream & operator <<(std::ostream & escribir,Escuela & obj);
 };
 

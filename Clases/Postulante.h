@@ -13,10 +13,11 @@ class Postulante: public DatosPersona
         bool ingreso;
     public:
         Postulante();
-        Postulante(char* n,char* c,char *S,char* a,char* Ca,float p);
+        //Postulante(char* n,char* c,char *S,char* a,char* Ca,float p);
         bool Ingresante();
         void mostrar();
         bool operator<(Postulante P);
+        void asignarDatos(char* n,char* c,char *S,char* a,char* Ca,float p);
 
 };
 

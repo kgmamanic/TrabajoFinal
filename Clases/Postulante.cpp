@@ -5,7 +5,8 @@ Postulante::Postulante()
 {    
 }
 
-Postulante::Postulante(char* n,char* c,char* S,char* a,char* Ca,float p):DatosPersona(n,a,c,S){
+void Postulante::asignarDatos(char* n,char* c,char* S,char* a,char* Ca,float p){
+    asigDatos(n,a,c,S);
     strcpy(carrera,Ca);
     puntaje = p;
 }

@@ -19,11 +19,14 @@ class Asignatura{
         int nAlumnos;
     public:
         Asignatura();
+        //Asignatura(char *n,char* c,char d[][40],int nD);
         char *getNom();
         void modAsignatura();
         void agregarEstudiante(Estudiante *Estudy);
         char *getCod();
+        void asignarDatos(char *n,char* c,char d[][40],int nD);
 };
 
+#include "Asignatura.cpp"
 #endif // ASIGNATURA_H
 

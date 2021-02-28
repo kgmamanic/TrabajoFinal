@@ -21,18 +21,17 @@ void Escuela::AgregarAsi(Asignatura *A){
     asignaturas[nCursos] = A; 
 }
 
-// Opcion para modificar los atributos de la escuela
-void Escuela::ModEscuela(){
-    //Todavia
-}
-
-
 // Retorna el numero de Vacantes disponibles
 int Escuela::getVacantes(){
     return nVacantes;
 }
 char* Escuela::getSiglas(){
     return Siglas;
+}
+void Escuela::asignarDatos(char *n,int nV,char* S){
+    strcpy(Nombre,n);
+    nVacantes = nV;
+    strcpy(Siglas,S);
 }
 
 std::ostream & operator <<(std::ostream & escribir,Escuela & obj){

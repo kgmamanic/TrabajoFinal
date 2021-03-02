@@ -5,9 +5,8 @@ Postulante::Postulante()
 {    
 }
 
-void Postulante::asignarDatos(char* n,char* c,char* S,char* a,char* Ca,float p){
+void Postulante::asignarDatos(char* n,char* c,char* S,char* a,float p){
     asigDatos(n,a,c,S);
-    strcpy(carrera,Ca);
     puntaje = p;
 }
 
@@ -17,7 +16,7 @@ bool Postulante::Ingresante(){
 }
 
 void Postulante::mostrar(){
-    std::cout<<getNombre()<<getApe()<<" "<<getcod()<<carrera<<" "<<puntaje;
+    std::cout<<getNombre()<<getApe()<<" "<<getcod()<<" "<<puntaje;
 }
 
 bool Postulante:: operator<(Postulante P){
@@ -26,4 +25,8 @@ bool Postulante:: operator<(Postulante P){
     }else{
         return false;
     }
+}
+
+float Postulante::getPunt(){
+    return puntaje;
 }

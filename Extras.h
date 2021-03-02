@@ -225,8 +225,8 @@ void clave(string &pass){
 void modificar(char* atrib){
     char letra;
     string palabra = atrib;
-    letra = getch();
     cout<<atrib;
+    letra = getch();
     while(letra != ENTER){
         if(letra != RETROCESO){
             palabra.push_back(letra);
@@ -237,5 +237,7 @@ void modificar(char* atrib){
                 palabra = palabra.substr(0,palabra.length()-1);
             }
         }
+        letra = getch();
     }
+    strcpy(atrib,palabra.c_str());
 }

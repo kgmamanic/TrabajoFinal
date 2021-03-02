@@ -107,16 +107,16 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
         case 1:
             opcion2 = Menu("ADMINISTRADOR: modificar", op2, 6);
                 switch(opcion2){
-                    case 1:
+                    case 1: // Facultades
                         Lista(Facu,F);
                         break;
-                    case 2:
+                    case 2: // Escuelas
                         Lista(escu,Esc);
                         break;
-                    case 3:
+                    case 3: // Asignaturas
                         Lista(asig,A);
-                        break;
-                    case 4:
+                        break; 
+                    case 4: // Estudiantes
                         system("cls");
                         cuadro();
                         gotoxy(55,17);
@@ -124,7 +124,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                         gotoxy(40,20);
                         cout<<"Codigo:";
                         Pequecuadro(47,19);
-                        gotoxy(47,20);
+                        gotoxy(48,20);
                         cin.getline(codigo,7);
                         temp = Buscar(estu,Est,codigo);
                         if(temp != 0){
@@ -139,7 +139,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                             gotoxy(28,26);
                             cout<<"Codigo:(Ejm 20-001):";Pequecuadro(47,25);
                             gotoxy(36,29);
-                            cout<<"Contrase\244a:";Pequecuadro(47,28);
+                            cout<<"Contrase\244a";Pequecuadro(47,28);
                             strcpy(nombre,estu[temp].getNombre());
                             strcpy(apellido,estu[temp].getApe());
                             strcpy(codigo,estu[temp].getcod());
@@ -158,7 +158,49 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                         }
                         break;  
                     case 5:
-                        Lista(postu,P);
+                        fflush(stdin); 
+                        system("cls");
+                        cuadro();
+                        gotoxy(55,17);
+                        cout<<"MODIFICAR POSTULANTE";
+                        gotoxy(40,20);
+                        cout<<"Codigo:";
+                        Pequecuadro(47,19);
+                        gotoxy(48,20);
+                        cin.getline(codigo,7);
+                        temp = Buscar(postu,P,codigo);
+                        if(temp != 0){
+                            system("cls");
+                            cuadro();
+                            gotoxy(55,17); cout<<"MODIFICAR POSTULANTE";
+                            gotoxy(40,20);
+                            //archivoEstudiante.open("Estudiantes",ios::out||ios::binary);
+                            cout<<"Nombre:";Pequecuadro(47,19);
+                            gotoxy(37,23);
+                            cout<<"Apellidos:"; Pequecuadro(47,22);
+                            gotoxy(28,26);
+                            cout<<"Codigo:(Ejm 20-001):";Pequecuadro(47,25);
+                            gotoxy(36,29);
+                            cout<<"Contrase\244a:";Pequecuadro(47,28);
+                            strcpy(nombre,postu[temp].getNombre());
+                            strcpy(apellido,postu[temp].getApe());
+                            strcpy(codigo,postu[temp].getcod());
+                            // ingresar datos
+                            gotoxy(48,20);
+                            modificar(nombre);
+                            gotoxy(48,23);
+                            modificar(apellido);
+                            gotoxy(48,26);
+                            modificar(codigo);
+                            gotoxy(48,29);
+                            system("cls");
+                            // falta modificar
+                            postu[temp].asignarDatos(nombre,codigo,"ESIS",apellido,puntaje);
+                        }else{
+                            system("cls");
+                            cuadro(); 
+                            gotoxy(55,17); cout<<"NO SE HA ENCONTRADO AL POSTULANTE";
+                        }
                         break;
                 }
             break;
@@ -278,14 +320,14 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     fflush(stdin); cin>>puntaje;
                     P = P+1; // contador de postulantes                    
                     char AAA[] = "ESIS"; // eliminar 
-                    postu[P].asignarDatos(nombre,codigo,AAA,apellido,AAA,puntaje);
+                    postu[P].asignarDatos(nombre,codigo,AAA,apellido,puntaje);
                     // Ordena los postulantes
                     quickshortDes(postu,P);
-                    administrador(Facu,escu,asig,estu,postu,F,Esc,A,Est,P);
                     break;
             }
             break;
         default: return;
+        administrador(Facu,escu,asig,estu,postu,F,Esc,A,Est,P);
     }
 }
 

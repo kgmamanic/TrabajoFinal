@@ -15,12 +15,12 @@ int Lista(clase A[], int n){ //
 }
 
 template <class clase>
-int Buscar(clase A, int n, char t[]){
+int Buscar(clase A[], int n, char t[]){
     int opcion;
     for(int i = 1; i<=n;i++){
-        if(strcoll(A->getcod(), t)==0){
+        if(strcoll(A[i].getcod(), t)==0){
             opcion = i;
-            break;
+            i = n+1;
         }else{
             opcion = 0;
         }

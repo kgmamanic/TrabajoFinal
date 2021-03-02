@@ -1,16 +1,16 @@
 #include "Escuela.h"
 
 #include <fstream>
-
+/*
 Escuela::Escuela()
 {
-    /*
+    
     nCursos = 0;
     nEstudiantes = 0;
     nVacantes = 0;
-    */
+    
 }
-
+*/
 char* Escuela::getNombre(){
     return Nombre;
 }

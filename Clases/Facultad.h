@@ -9,7 +9,7 @@ class Facultad
     public:
         Facultad();
         //Facultad(char* n);
-        char* getNom();
+        char* getNombre();
         void mostrarEscuelas();
         void crearEscuela(Escuela E[],int &contE);
         void asignarDatos(char *n);
@@ -19,6 +19,8 @@ class Facultad
         Escuela *escuelas[20];
         int nEscuelas;
 };
+
+int sizeFacultad = sizeof(Facultad);
 
 #include "Facultad.cpp"
 #endif // FACULTAD_H

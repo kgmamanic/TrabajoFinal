@@ -221,3 +221,21 @@ void clave(string &pass){
         letra = getch();
     }
 }
+
+void modificar(char* atrib){
+    char letra;
+    string palabra = atrib;
+    letra = getch();
+    cout<<atrib;
+    while(letra != ENTER){
+        if(letra != RETROCESO){
+            palabra.push_back(letra);
+            cout<<letra;
+        }else{
+            if(palabra.length()> 0){
+                cout<<"\b \b";
+                palabra = palabra.substr(0,palabra.length()-1);
+            }
+        }
+    }
+}

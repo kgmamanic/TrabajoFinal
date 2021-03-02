@@ -26,7 +26,7 @@ char* DatosPersona::getcod(){
 }
 
 // Retorna Nombre
-char* DatosPersona::getnombre(){
+char* DatosPersona::getNombre(){
     return nombre;
 }
 

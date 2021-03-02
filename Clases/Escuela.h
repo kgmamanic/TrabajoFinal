@@ -5,7 +5,7 @@
 class Escuela
 {
     private:
-        char Nombre[20];
+        char Nombre[60];
         Asignatura *asignaturas[20];
         int nCursos;
         int nEstudiantes;
@@ -13,7 +13,7 @@ class Escuela
         int nVacantes;
         char Siglas[5];
     public:
-        Escuela();
+        Escuela(){}
         char* getNombre();
         void AgregarAsi(Asignatura *Asi);
         int getVacantes();
@@ -21,6 +21,8 @@ class Escuela
         void asignarDatos(char *n,int nV,char* S);
         friend std::ostream & operator <<(std::ostream & escribir,Escuela & obj);
 };
+
+int sizeEscuela = sizeof(Escuela);
 
 #include "Escuela.cpp"
 

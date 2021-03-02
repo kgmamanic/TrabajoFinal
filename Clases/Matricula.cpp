@@ -2,7 +2,10 @@
 
 Matricula::Matricula()
 {
-    //ctor
+    /* ctor; 
+    nMatricula = 0000;
+    
+    */
 }
 
 int Matricula::getMatricula(){

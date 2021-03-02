@@ -28,7 +28,7 @@ char* Asignatura::getCod(){
     return codigo;
 }
 
-char* Asignatura::getNom(){
+char* Asignatura::getNombre(){
     return nombre;
 }
 

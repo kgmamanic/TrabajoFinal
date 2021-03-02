@@ -21,5 +21,7 @@ class Estudiante: public DatosPersona
         int nmatricula;
 };
 
+int sizeEstudiante= sizeof(Estudiante);
+
 #include "Estudiante.cpp"
 #endif // ESTUDIANTE_H

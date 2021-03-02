@@ -17,7 +17,7 @@ bool Postulante::Ingresante(){
 }
 
 void Postulante::mostrar(){
-    std::cout<<getnombre()<<getApe()<<" "<<getcod()<<carrera<<" "<<puntaje;
+    std::cout<<getNombre()<<getApe()<<" "<<getcod()<<carrera<<" "<<puntaje;
 }
 
 bool Postulante:: operator<(Postulante P){

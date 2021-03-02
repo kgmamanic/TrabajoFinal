@@ -3,7 +3,6 @@
 #include <string>
 #include <fstream>
 
-#include "ordenador.h"
 #include"Clases/Escuela.h"
 #include"Clases/Facultad.h"
 #include"Clases/Postulante.h"
@@ -11,6 +10,9 @@
 using namespace std;
 
 #include"Extras.h"
+
+#include "buscardor.h"
+#include "ordenador.h"
 // Recibe como parametros los contadores de cada clase
 void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante estu[],Postulante postu[],int &F,int &Esc, int &A,int &Est,int &P);
 
@@ -24,6 +26,8 @@ int main(){
     Estudiante EEstu[100];
     // Declaracion de Contadores
     int contP=0,contA=0,contEsc=0,contF=0,contEst=0;
+    //Declaracion de archivos fstream
+    fstream archivoFactuldad, archivoEscuela, archivoPostulante, archivoEstudiante;
     
     string titulomenu;
     string opcionesmenu[] = {"Estudiante" , "Postulante","Visualizar","Administrador","Salir"};
@@ -41,6 +45,7 @@ int main(){
         switch(seleccion){
             case 1:
             // Solicitara usuario y contraseña usuario:(SIGLAS DE ESCUELA)+(codigo)
+
                 break;
             case 2:
                 // 2 opciones buscar por nombre y la otra ver lista completa
@@ -60,7 +65,7 @@ int main(){
                 gotoxy(40,21); cout<<" Usuario:";
                 Pequecuadro(49, 20);
                 cout<<admin;
-                gotoxy(40, 25); cout<<"Password:";
+                gotoxy(40, 25); cout<<"Password:";  //lagarto
                 Pequecuadro(49,24);
                 clave(contrasenia); 
                 gotoxy(40, 28);
@@ -92,6 +97,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
     char nombre[20],apellido[30],codigo[7],pass[15],SSiglas[5],Docentes[3][40];
     float puntaje;
     int nDocentes;
+    int temp;
     // menus
     string nombremenu = "Bienvenido, Administrador";
     string opciones[] = {"Modificar","Eliminar","Agregar","Volver"};
@@ -99,10 +105,68 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
     opcion = Menu(nombremenu,opciones, 4);
     switch(opcion){
         case 1:
-            opcion2= Menu("ADMINISTRADOR: modificar", op2, 6);
+            opcion2 = Menu("ADMINISTRADOR: modificar", op2, 6);
+                switch(opcion2){
+                    case 1:
+                        Lista(Facu,F);
+                        break;
+                    case 2:
+                        Lista(escu,Esc);
+                        break;
+                    case 3:
+                        Lista(asig,A);
+                        break;
+                    case 4:
+                        system("cls");
+                        cuadro();
+                        gotoxy(55,17);
+                        cout<<"MODIFICAR ESTUDIANTE";
+                        gotoxy(40,20);
+                        cout<<"Codigo:";
+                        Pequecuadro(47,19);
+                        gotoxy(47,20);
+                        cin.getline(codigo,7);
+                        temp = Buscar(estu,Est,codigo);
+                        if(temp != 0){
+                            system("cls");
+                            cuadro(); 
+                            gotoxy(55,17); cout<<"MODIFICAR ESTUDIANTE";
+                            gotoxy(40,20);
+                            //archivoEstudiante.open("Estudiantes",ios::out||ios::binary);
+                            cout<<"Nombre:";Pequecuadro(47,19);
+                            gotoxy(37,23);
+                            cout<<"Apellidos:"; Pequecuadro(47,22);
+                            gotoxy(28,26);
+                            cout<<"Codigo:(Ejm 20-001):";Pequecuadro(47,25);
+                            gotoxy(36,29);
+                            cout<<"Contrase\244a:";Pequecuadro(47,28);
+                            strcpy(nombre,estu[temp].getNombre());
+                            strcpy(apellido,estu[temp].getApe());
+                            strcpy(codigo,estu[temp].getcod());
+                            strcpy(pass,estu[temp].getcontrasena());
+                            // ingresar datos
+                            gotoxy(48,20);
+                            modificar(nombre);
+                            gotoxy(48,23);
+                            modificar(apellido);
+                            gotoxy(48,26);
+                            modificar(codigo);
+                            gotoxy(48,29);
+                            modificar(pass);
+                            system("cls");
+                            estu[temp].asignarDatos(nombre,apellido,codigo,estu[temp].obtenerSiglas(),pass);
+                        }
+                        break;  
+                    case 5:
+                        Lista(postu,P);
+                        break;
+                }
             break;
         case 2:
             opcion2 = Menu("ADMINISTRADOR: Eliminar", op2, 6);
+            switch(opcion2){
+
+            }
             break;
         case 3:
             opcion2 = Menu("ADMINISTRADOR: Agregar", op2, 6);
@@ -120,6 +184,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     gotoxy(35,25);cout<<"FACULTAD CREADA CON EXITO..";
                     gotoxy(35,26);cout<<"Cree una Escuela para la Facultad";
                     Sleep(2000);
+                    system("cls");
                     Facu[F].crearEscuela(escu,Esc);
                     break;
                 case 2: // agregar escuelas - DESARROLLADO
@@ -150,13 +215,13 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     gotoxy(55,17);
                     cout<<"DOCENTES: "<<nombre;
                     for(int i = 0; i <nDocentes; i++){
-                        if((nDocentes-1) == i){
+                        //if((nDocentes) != i){
                             gotoxy(38,variabletemp);
                             cout<<"Nombre N°"<<i; Pequecuadro(47,variabletemp-1);
                             gotoxy(48,variabletemp);
                             fflush(stdin);cin.getline(Docentes[i],40);
                             variabletemp = variabletemp +3;
-                        }
+                        //}
                     }
                     A = A+1;
                     asig[A].asignarDatos(nombre,codigo,Docentes,nDocentes);
@@ -166,6 +231,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     cuadro(); 
                     gotoxy(55,17); cout<<"AGREGAR ESTUDIANTE";
                     gotoxy(40,20);
+                    //archivoEstudiante.open("Estudiantes",ios::out||ios::binary);
                     cout<<"Nombre:";Pequecuadro(47,19);
                     gotoxy(37,23);
                     cout<<"Apellidos:"; Pequecuadro(47,22);

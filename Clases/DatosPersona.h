@@ -8,7 +8,7 @@ class DatosPersona
         DatosPersona();
         //DatosPersona(char* n,char* a,char* c,char* S);
         char* getcod();
-        char* getnombre();
+        char* getNombre();
         char* obtenerSiglas();
         char* getApe();
         void asigDatos(char* n,char* a,char* c,char* S);

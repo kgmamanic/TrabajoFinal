@@ -38,6 +38,7 @@ void Facultad::crearEscuela(Escuela E[], int &contE){
     nEscuelas = nEscuelas +1;
     escuelas[nEscuelas] = new Escuela;
     escuelas[nEscuelas]->asignarDatos(nombre,numVac,Siglas);
+    E[contE].asignarDatos(nombre,numVac,Siglas);
     
 }
 std::ostream & operator <<(std::ostream & escribir,Facultad & obj){

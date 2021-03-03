@@ -108,7 +108,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
             opcion2 = Menu("ADMINISTRADOR: modificar", op2, 6);
                 switch(opcion2){
                     case 1: // Facultades
-                        temp = Menu("Seleccion Facultad a Modificar",Facu,F);
+                        temp = MenuEF("Seleccion Facultad a Modificar",Facu,F);
                         system("cls");
                         cuadro();
                         gotoxy(55,17);
@@ -122,7 +122,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                         Facu[temp].asignarDatos(nombre);
                         break;
                     case 2: // Escuelas
-                        temp = Menu("Selccion Escuela a Modificar",escu,Esc);
+                        temp = MenuEF("Selccion Escuela a Modificar",escu,Esc);
                         system("cls");
                         cuadro();
                         gotoxy(55,17);

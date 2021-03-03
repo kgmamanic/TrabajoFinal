@@ -96,7 +96,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
     // Variables Temporales
     char nombre[20],apellido[30],codigo[7],pass[15],SSiglas[5],Docentes[3][40];
     float puntaje;
-    int nDocentes;
+    int nDocentes,vacantes;
     int temp;
     // menus
     string nombremenu = "Bienvenido, Administrador";
@@ -108,13 +108,72 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
             opcion2 = Menu("ADMINISTRADOR: modificar", op2, 6);
                 switch(opcion2){
                     case 1: // Facultades
-                        Lista(Facu,F);
+                        temp = MenuEF("Seleccion Facultad a Modificar",Facu,F);
+                        system("cls");
+                        cuadro();
+                        gotoxy(55,17);
+                        cout<<"MODIFICAR FACULTAD";
+                        gotoxy(40,20);
+                        cout<<"NOMBRE:";
+                        Pequecuadro(47,19);
+                        strcpy(nombre,Facu[temp].getNombre());
+                        gotoxy(48,20);
+                        modificar(nombre);
+                        Facu[temp].asignarDatos(nombre);
                         break;
                     case 2: // Escuelas
-                        Lista(escu,Esc);
+                        temp = MenuEF("Selccion Escuela a Modificar",escu,Esc);
+                        system("cls");
+                        cuadro();
+                        gotoxy(55,17);
+                        cout<<"MODIFICAR ESCUELA";
+                        gotoxy(40,20);
+                        cout<<"Nombre"; Pequecuadro(47,19);
+                        gotoxy(38,23);
+                        cout<<"Vacantes:";Pequecuadro(47,22);
+                        gotoxy(40,26);
+                        cout<<"Siglas:";Pequecuadro(47,25);
+                        strcpy(nombre,escu[temp].getNombre());
+                        strcpy(SSiglas,escu[temp].getSiglas());
+                        // modificar
+                        gotoxy(48,20);
+                        modificar(nombre);
+                        gotoxy(48,23);
+                        cin>>vacantes;
+                        gotoxy(48,26);
+                        modificar(SSiglas);
+                        escu[temp].asignarDatos(nombre,vacantes,SSiglas);
                         break;
                     case 3: // Asignaturas
-                        Lista(asig,A);
+                        fflush(stdin); 
+                        system("cls");
+                        cuadro();
+                        gotoxy(55,17);
+                        cout<<"MODIFICAR POSTULANTE";
+                        gotoxy(40,20);
+                        cout<<"Codigo:";
+                        Pequecuadro(47,19);
+                        gotoxy(48,20);
+                        cin.getline(codigo,7);
+                        temp = Buscar(asig,A,codigo);
+                        if(temp != 0){
+                            system("cls");
+                            cuadro();
+                            gotoxy(55,17);
+                            cout<<"MODIFICAR ASIGNATURA";
+                            gotoxy(40,20);
+                            cout<<"Nombre:";Pequecuadro(47,19);
+                            gotoxy(38,23);
+                            cout<<"Codigo:";Pequecuadro(47,22);
+                            strcpy(nombre,asig[temp].getNombre());
+                            strcpy(codigo,asig[temp].getCod());
+                            gotoxy(48,20);
+                            modificar(nombre);
+                            gotoxy(48,23);
+                            modificar(codigo);
+                            system("cls");
+                            asig[temp].modAsignatura(nombre,codigo);
+                        }
                         break; 
                     case 4: // Estudiantes
                         system("cls");

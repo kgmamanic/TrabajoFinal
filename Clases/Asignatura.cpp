@@ -20,7 +20,9 @@ void Asignatura::agregarEstudiante(Estudiante *E){
 
 
 // modifica asignatura solo administradores
-void Asignatura::modAsignatura(){
+void Asignatura::modAsignatura(char *n , char *c){
+    strcpy(nombre,n);
+    strcpy(codigo,c);
     // todavia
 }
 

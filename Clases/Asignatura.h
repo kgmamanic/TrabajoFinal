@@ -21,7 +21,7 @@ class Asignatura{
         Asignatura();
         //Asignatura(char *n,char* c,char d[][40],int nD);
         char *getNombre();
-        void modAsignatura();
+        void modAsignatura(char *n , char *c);
         void agregarEstudiante(Estudiante *Estudy);
         char *getCod();
         void asignarDatos(char *n,char* c,char d[][40],int nD);

@@ -13,7 +13,7 @@ int Lista(clase A[], int n){ //
     int opcion = Menu("Seleccione:",lista,n);
     return opcion;
 }
-
+// busca recibe como parametro un arreglo de clase, numero elementos en el arreglo y el codigo a buscarw
 template <class clase>
 int Buscar(clase A[], int n, char t[]){
     int opcion;

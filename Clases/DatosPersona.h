@@ -7,7 +7,7 @@ class DatosPersona
     public:
         DatosPersona();
         //DatosPersona(char* n,char* a,char* c,char* S);
-        char* getcod();
+        char* getCod();
         char* getNombre();
         char* obtenerSiglas();
         char* getApe();

@@ -84,8 +84,10 @@ void Pequecuadro(int x, int y){
     ModCursor(TRUE);
 }
 
+
 // Implementa un menu. Recibe como Parámetros nombremenu( titulo del menu), opciones(arreglo de opciones), nopciones(cantidad de opciones)
-int Menu(string nombremenu, string opciones[], int nopciones){
+template <class a>
+int Menu(string nombremenu, a opciones[], int nopciones){
     int tecla;
     bool repetir = true;
     int flecha = 18, opcion = 1;

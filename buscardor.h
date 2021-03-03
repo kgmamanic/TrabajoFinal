@@ -18,7 +18,7 @@ template <class clase>
 int Buscar(clase A[], int n, char t[]){
     int opcion;
     for(int i = 1; i<=n;i++){
-        if(strcoll(A[i].getcod(), t)==0){
+        if(strcoll(A[i].getCod(), t)==0){
             opcion = i;
             i = n+1;
         }else{

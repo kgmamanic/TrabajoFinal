@@ -21,7 +21,7 @@ char* DatosPersona::getApe(){
 }
 
 // Retorna Codigo
-char* DatosPersona::getcod(){
+char* DatosPersona::getCod(){
     return codigo;
 }
 

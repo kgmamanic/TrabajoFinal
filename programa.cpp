@@ -108,7 +108,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
             opcion2 = Menu("ADMINISTRADOR: modificar", op2, 6);
                 switch(opcion2){
                     case 1: // Facultades
-                        temp = MenuEF("Seleccion Facultad a Modificar",Facu,F);
+                        temp = Menu("Seleccion Facultad a Modificar",Facu,F);
                         system("cls");
                         cuadro();
                         gotoxy(55,17);
@@ -122,7 +122,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                         Facu[temp].asignarDatos(nombre);
                         break;
                     case 2: // Escuelas
-                        temp = MenuEF("Selccion Escuela a Modificar",escu,Esc);
+                        temp = Menu("Selccion Escuela a Modificar",escu,Esc);
                         system("cls");
                         cuadro();
                         gotoxy(55,17);
@@ -201,7 +201,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                             cout<<"Contrase\244a";Pequecuadro(47,28);
                             strcpy(nombre,estu[temp].getNombre());
                             strcpy(apellido,estu[temp].getApe());
-                            strcpy(codigo,estu[temp].getcod());
+                            strcpy(codigo,estu[temp].getCod());
                             strcpy(pass,estu[temp].getcontrasena());
                             // ingresar datos
                             gotoxy(48,20);
@@ -243,7 +243,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                             cout<<"Contrase\244a:";Pequecuadro(47,28);
                             strcpy(nombre,postu[temp].getNombre());
                             strcpy(apellido,postu[temp].getApe());
-                            strcpy(codigo,postu[temp].getcod());
+                            strcpy(codigo,postu[temp].getCod());
                             // ingresar datos
                             gotoxy(48,20);
                             modificar(nombre);

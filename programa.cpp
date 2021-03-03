@@ -24,28 +24,76 @@ int main(){
     Escuela EEsc[100];
     Facultad FFacu[100];
     Estudiante EEstu[100];
+    // variables temporales
+    int nEstudiante,temp2;
+    char codigotemp[7],passtemp[20];
+    
     // Declaracion de Contadores
     int contP=0,contA=0,contEsc=0,contF=0,contEst=0;
     //Declaracion de archivos fstream
     fstream archivoFactuldad, archivoEscuela, archivoPostulante, archivoEstudiante;
     
-    string titulomenu;
+    string titulomenu,opcionesEstu[] = {"Realizar Matricula", "Ver Horario" , "Ver info"};
     string opcionesmenu[] = {"Estudiante" , "Postulante","Visualizar","Administrador","Salir"};
     string menuVisu[] = {"Facultades", "Escuelas", "Resultados de Examenes","Volver"};
-    string contrasenia;
+    string contrasenia,tempEstudiante;
     bool NoSalir = true; // para salir del bucle del menu
     int seleccion,seleccion2;
-    char letra; // para administrador contraseña
     system("cls");
-    do{    
+    do{
         //MessageBox(0,"¿Guardar cambios?", "Título", MB_YESNO | MB_ICONQUESTION);
+        tempEstudiante = "";
         titulomenu = {"Menu principal"};
         seleccion = Menu(titulomenu,opcionesmenu,5);
         titulomenu = opcionesmenu[seleccion-1];
         switch(seleccion){
             case 1:
             // Solicitara usuario y contraseña usuario:(SIGLAS DE ESCUELA)+(codigo)
-
+                system("cls");
+                cuadro();
+                gotoxy(45,17); cout<<"ESTUDIANTE: ingrese usuario y contrase\244a";
+                gotoxy(40,21); cout<<"Codigo:";
+                Pequecuadro(49, 20);
+                gotoxy(40, 25); cout<<"Password:";  //lagarto
+                Pequecuadro(49,24);
+                // ingresar datos
+                gotoxy(50,21);
+                fflush(stdin);cin.getline(codigotemp,7);
+                gotoxy(50,25);
+                clave(passtemp);
+                nEstudiante = usuario(EEstu,contEst,codigotemp,passtemp); 
+                gotoxy(40, 28);
+                if(nEstudiante != 0){
+                    cout<<"Correcto... Iniciando Sesion";
+                    Sleep(500); cout<<".";
+                    Sleep(500); cout<<".";
+                    Sleep(500); cout<<".";
+                    system("cls");
+                    cuadro();
+                    gotoxy(45,17);
+                    // append concatena strings
+                    tempEstudiante.append("Bienvenido ");
+                    tempEstudiante.append(EEstu[nEstudiante].getNombre());
+                    temp2 = Menu(tempEstudiante,opcionesEstu,3);
+                    switch(temp2){
+                        case 1: // realizar matricula
+                        case 2: // ver horario
+                        case 3: // verinfo
+                            system("cls");
+                            cuadro();
+                            gotoxy(45,17);
+                            cout<<"-------INFORMACION DE ESTUDIANTE--------";
+                            gotoxy(45,19);
+                            cout<<"Nombre: "<<EEstu[nEstudiante].getNombre();
+                            gotoxy(45,20);
+                            break;
+                    }
+                }else{
+                    cout<<"Incorrecto... Volviendo a Menu Principal";
+                    Sleep(500); cout<<".";
+                    Sleep(500); cout<<".";
+                    Sleep(500); cout<<".";
+                }
                 break;
             case 2:
                 // 2 opciones buscar por nombre y la otra ver lista completa
@@ -90,14 +138,14 @@ int main(){
 }
 
 void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante estu[],Postulante postu[],int &F,int &Esc, int &A,int &Est,int &P){
-    int opcion,opcion2,nSEscuela,nFacu,variabletemp=5; 
+    int opcion,opcion2,nSEscuela,nFacu,variabletemp=20; 
     system("cls");
     bool seguir();
     // Variables Temporales
     char nombre[20],apellido[30],codigo[7],pass[15],SSiglas[5],Docentes[3][40];
     float puntaje;
     int nDocentes,vacantes;
-    int temp;
+    int temp,temp2;
     // menus
     string nombremenu = "Bienvenido, Administrador";
     string opciones[] = {"Modificar","Eliminar","Agregar","Volver"};
@@ -233,7 +281,6 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                             cuadro();
                             gotoxy(55,17); cout<<"MODIFICAR POSTULANTE";
                             gotoxy(40,20);
-                            //archivoEstudiante.open("Estudiantes",ios::out||ios::binary);
                             cout<<"Nombre:";Pequecuadro(47,19);
                             gotoxy(37,23);
                             cout<<"Apellidos:"; Pequecuadro(47,22);
@@ -253,8 +300,8 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                             modificar(codigo);
                             gotoxy(48,29);
                             system("cls");
-                            // falta modificar
-                            postu[temp].asignarDatos(nombre,codigo,"ESIS",apellido,puntaje);
+                            temp2 = MenuEF("Seleccion la escuela",escu,Esc);
+                            postu[temp].asignarDatos(nombre,codigo,escu[temp2].getSiglas(),apellido,puntaje);
                         }else{
                             system("cls");
                             cuadro(); 
@@ -317,15 +364,17 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     cout<<"DOCENTES: "<<nombre;
                     for(int i = 0; i <nDocentes; i++){
                         //if((nDocentes) != i){
-                            gotoxy(38,variabletemp);
-                            cout<<"Nombre N°"<<i; Pequecuadro(47,variabletemp-1);
+                            gotoxy(37,variabletemp);
+                            cout<<"Nombre N\370"<<i+1; Pequecuadro(47,variabletemp-1);
                             gotoxy(48,variabletemp);
                             fflush(stdin);cin.getline(Docentes[i],40);
                             variabletemp = variabletemp +3;
                         //}
                     }
+                    variabletemp = 20;
                     A = A+1;
-                    asig[A].asignarDatos(nombre,codigo,Docentes,nDocentes);
+                    temp2 = MenuEF("Seleccion la escuela",escu,Esc);
+                    asig[A].asignarDatos(nombre,codigo,Docentes,nDocentes,&escu[temp2]);
                     break;
                 case 4: // Agregar Estudiante - FALTA
                     system("cls");
@@ -373,21 +422,21 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     gotoxy(48,23);
                     fflush(stdin); cin.getline(apellido,30); // apellidos
                     gotoxy(48,26);
-                    strcat(codigo,"AAA");
+                    //strcat(codigo,"AAA");
                     fflush(stdin); cin.getline(codigo,sizeof(codigo));
                     gotoxy(48,29);
                     fflush(stdin); cin>>puntaje;
                     P = P+1; // contador de postulantes                    
-                    char AAA[] = "ESIS"; // eliminar 
-                    postu[P].asignarDatos(nombre,codigo,AAA,apellido,puntaje);
+                    temp = MenuEF("Seleccion a que escuela postula",escu,Esc); // eliminar 
+                    postu[P].asignarDatos(nombre,codigo,escu[temp].getSiglas(),apellido,puntaje);
                     // Ordena los postulantes
                     quickshortDes(postu,P);
                     break;
             }
             break;
         default: return;
-        administrador(Facu,escu,asig,estu,postu,F,Esc,A,Est,P);
     }
+    administrador(Facu,escu,asig,estu,postu,F,Esc,A,Est,P);
 }
 
 //  g++ -o programa.exe programa.cpp

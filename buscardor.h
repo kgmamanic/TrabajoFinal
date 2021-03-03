@@ -18,6 +18,7 @@ template <class clase>
 int Buscar(clase A[], int n, char t[]){
     int opcion;
     for(int i = 1; i<=n;i++){
+        // compara 2 elementos a == A
         if(strcoll(A[i].getCod(), t)==0){
             opcion = i;
             i = n+1;
@@ -26,4 +27,14 @@ int Buscar(clase A[], int n, char t[]){
         }
     }
     return opcion;
+}
+template <class clase>
+int usuario(clase A[],int n, char co[],char pass[]){
+    int usuario = Buscar(A,n,co);
+    // strcmp compara 2 elementos a != A
+    if(strcmp(A[usuario].getcontrasena(),pass)==0){
+        return usuario;
+    }else{
+        return 0;
+    }
 }

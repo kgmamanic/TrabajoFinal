@@ -223,6 +223,12 @@ void clave(string &pass){
     }
 }
 
+void clave(char cl[]){
+    string contra = cl;
+    clave(contra);
+    strcpy(cl,contra.c_str());
+}
+
 void modificar(char* atrib){
     char letra;
     string palabra = atrib;

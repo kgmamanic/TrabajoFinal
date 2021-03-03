@@ -24,7 +24,7 @@ class Asignatura{
         void modAsignatura(char *n , char *c);
         void agregarEstudiante(Estudiante *Estudy);
         char *getCod();
-        void asignarDatos(char *n,char* c,char d[][40],int nD);
+        void asignarDatos(char *n,char* c,char d[][40],int nD,Escuela *es);
 };
 
 int sizeAsignatura = sizeof(Asignatura);

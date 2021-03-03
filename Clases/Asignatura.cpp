@@ -5,9 +5,10 @@ Asignatura::Asignatura()
     //ctor
 }
 
-void Asignatura::asignarDatos(char *n,char* c,char d[][40],int nD){
+void Asignatura::asignarDatos(char *n,char* c,char d[][40],int nD,Escuela *es){
     strcpy(nombre,n);
     strcpy(codigo,c);
+    escuela = es;
     for(int i=0;i<nD;i++){
         strcpy(docentes[i],d[1]);
     }

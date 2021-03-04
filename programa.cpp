@@ -125,7 +125,7 @@ int main(){
                             gotoxy(45,21);
                             cout<<"Codigo: "<<EEstu[nEstudiante].getCod();
                             gotoxy(45,22);
-                            cout<<"Escuela"<<EEstu[nEstudiante].obtenerSiglas();
+                            cout<<"Escuela: "<<EEstu[nEstudiante].obtenerSiglas();
                             gotoxy(38,25);
                             system("pause");
                             break;

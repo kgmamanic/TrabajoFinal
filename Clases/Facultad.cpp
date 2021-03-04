@@ -26,6 +26,7 @@ void Facultad::mostrarEscuelas(){
 }
 
 void Facultad::crearEscuela(Escuela E[], int &contE){
+    cout<<"-----CREAR ESCUELA-----"<<endl;
     contE = contE+1;
     char nombre[60],Siglas[5];
     int numVac;
@@ -37,8 +38,8 @@ void Facultad::crearEscuela(Escuela E[], int &contE){
     fflush(stdin);cin.getline(Siglas,5);
     nEscuelas = nEscuelas +1;
     escuelas[nEscuelas] = new Escuela;
-    escuelas[nEscuelas]->asignarDatos(nombre,numVac,Siglas);
     E[contE].asignarDatos(nombre,numVac,Siglas);
+    escuelas[nEscuelas] = &E[contE];
     
 }
 std::ostream & operator <<(std::ostream & escribir,Facultad & obj){

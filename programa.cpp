@@ -20,12 +20,13 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
 template<class a>
 void leer(a tipo[],int &contador,string nombre,int size){
     int cantidad;
-    bool continuar = true;
     ifstream archivo("data/" + nombre+".dat",ios::binary);
     do{
         archivo.read((char*)&tipo[contador],size);
         cantidad = archivo.gcount();
-        contador = contador +1;
+        if(cantidad == size){
+            contador = contador +1;
+        }
     }while(cantidad == size);
     archivo.close();
     //contador = contador -1;
@@ -411,8 +412,6 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                             cout<<"Apellidos:"; Pequecuadro(47,22);
                             gotoxy(28,26);
                             cout<<"Codigo:(Ejm 20-001):";Pequecuadro(47,25);
-                            gotoxy(36,29);
-                            cout<<"Contrase\244a:";Pequecuadro(47,28);
                             strcpy(nombre,postu[temp].getNombre());
                             strcpy(apellido,postu[temp].getApe());
                             strcpy(codigo,postu[temp].getCod());

@@ -19,7 +19,6 @@ class Asignatura{
         int nAlumnos;
     public:
         Asignatura();
-        //Asignatura(char *n,char* c,char d[][40],int nD);
         char *getNombre();
         void modAsignatura(char *n , char *c);
         void agregarEstudiante(Estudiante *Estudy);

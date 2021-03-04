@@ -13,7 +13,6 @@ class Postulante: public DatosPersona
         int pos;
     public:
         Postulante();
-        //Postulante(char* n,char* c,char *S,char* a,char* Ca,float p);
         bool Ingresante();
         void mostrar();
         bool operator<(Postulante P);

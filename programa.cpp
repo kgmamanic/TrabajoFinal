@@ -64,9 +64,9 @@ int main(){
     // abrir archivos y recolectar datos
     leer(FFacu,contF,"Facultades",sizeFacultad);
     leer(EEsc,contEsc,"Escuelas",sizeEscuela);
-    leer(PPos,contP,"Postulantes",sizePostulante);
     leer(AAsi,contA,"Asignaturas",sizeAsignatura);
     leer(EEstu,contEst,"Estudiantes",sizeEstudiante);
+    leer(PPos,contP,"Postulantes",sizePostulante);
     
     string titulomenu,opcionesEstu[] = {"Realizar Matricula", "Ver Horario" , "Ver info"};
     string opcionesmenu[] = {"Estudiante" , "Postulante","Visualizar","Administrador","Salir"};
@@ -78,7 +78,6 @@ int main(){
 
     system("cls");
     do{
-        //MessageBox(0,"¿Guardar cambios?", "Título", MB_YESNO | MB_ICONQUESTION);
         tempEstudiante = "";
         titulomenu = {"Menu principal"};
         seleccion = Menu(titulomenu,opcionesmenu,5);
@@ -489,7 +488,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                             gotoxy(37,variabletemp);
                             cout<<"Nombre N\370"<<i+1; Pequecuadro(47,variabletemp-1);
                             gotoxy(48,variabletemp);
-                            fflush(stdin);cin.getline(Docentes[i],40);
+                            fflush(stdin);cin.getline(Docentes[i],50);
                             variabletemp = variabletemp +3;
                         //}
                     }

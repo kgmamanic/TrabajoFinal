@@ -13,7 +13,7 @@ class Asignatura{
         char nombre[40];
         char codigo[6];
         Escuela *escuela;
-        char docentes[3][30];
+        char docentes[3][50];
         int nDocentes;
         Estudiante *Alumnos[40];
         int nAlumnos;

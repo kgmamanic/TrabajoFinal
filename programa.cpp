@@ -58,7 +58,6 @@ int main(){
     // variables temporales
     int nEstudiante,temp2,nuevoEstu;
     char codigotemp[7],passtemp[20];
-
     // Declaracion de Contadores
     int contP=0,contA=0,contEsc=0,contF=0,contEst=0;
     
@@ -269,7 +268,8 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
     char nombre[40],apellido[30],codigo[7],pass[15],SSiglas[5],Docentes[3][40];
     float puntaje;
     int nDocentes,vacantes;
-    int temp,temp2;
+    int temp,temp2,temp3;
+    string asignaturastemp[30];
     // menus
     string nombremenu = "Bienvenido, Administrador";
     string opciones[] = {"Modificar","Eliminar","Agregar","Volver"};
@@ -321,7 +321,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                         system("cls");
                         cuadro();
                         gotoxy(55,17);
-                        cout<<"MODIFICAR POSTULANTE";
+                        cout<<"MODIFICAR ASIGNATURA";
                         gotoxy(40,20);
                         cout<<"Codigo:";
                         Pequecuadro(47,19);

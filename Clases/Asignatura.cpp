@@ -34,4 +34,3 @@ char* Asignatura::getCod(){
 char* Asignatura::getNombre(){
     return nombre;
 }
-

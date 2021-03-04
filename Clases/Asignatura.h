@@ -10,7 +10,7 @@ class Estudiante;
 
 class Asignatura{
     private:
-        char nombre[25];
+        char nombre[40];
         char codigo[6];
         Escuela *escuela;
         char docentes[3][30];

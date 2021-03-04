@@ -3,15 +3,19 @@
 #pragma "Extras.h"
 
 template <class clase>
-int Lista(clase A[], int n){ //
+void Lista(clase A[], int n){ //
     string lista[n];
     char temp[60];
     for(int i = 0; i < n;i++){
+        gotoxy(45,18+i);
         strcpy(temp,A[i+1].getNombre());
-        lista[i] = temp;
+        cout<<temp;
     }
-    int opcion = Menu("Seleccione:",lista,n);
-    return opcion;
+    gotoxy(45,19+n+1);
+    system("pause");
+    //int opcion = Menu("Seleccione:",lista,n);
+    //return opcion;
+
 }
 // busca recibe como parametro un arreglo de clase, numero elementos en el arreglo y el codigo a buscarw
 template <class clase>

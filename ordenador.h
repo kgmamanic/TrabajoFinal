@@ -30,3 +30,14 @@ void quickshortDes(clases A[],int &nu){
     //nu = nu-1;
     quickshortDes(A,1,nu);
 }
+
+template <class clases>
+int Puesto(clases A[],clases B,int n){
+    int pos = 1;
+    for(int i = 1; i<=n;i++){
+        if(A[i] > B && A[i].obtenerSiglas() == B.objtenerSiglas()){
+            pos = pos +1;
+        }
+    }
+    return pos;
+}

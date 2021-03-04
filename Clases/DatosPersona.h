@@ -13,7 +13,7 @@ class DatosPersona
         char* getApe();
         void asigDatos(char* n,char* a,char* c,char* S);
     private:
-        char nombre[20];
+        char nombre[40];
         char apellidos[30];
         char codigo[7];
         char EsSiglas[5];

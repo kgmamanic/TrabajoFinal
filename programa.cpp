@@ -7,6 +7,7 @@
 #include"Clases/Facultad.h"
 #include"Clases/Postulante.h"
 
+
 using namespace std;
 
 #include"Extras.h"
@@ -16,8 +17,35 @@ using namespace std;
 // Recibe como parametros los contadores de cada clase
 void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante estu[],Postulante postu[],int &F,int &Esc, int &A,int &Est,int &P);
 
+template<class a>
+void leer(a tipo[],int &contador,string nombre,int size){
+    int cantidad;
+    bool continuar = true;
+    ifstream archivo("data/" + nombre+".dat",ios::binary);
+    do{
+        archivo.read((char*)&tipo[contador],size);
+        cantidad = archivo.gcount();
+        contador = contador +1;
+    }while(cantidad == size);
+    archivo.close();
+    //contador = contador -1;
+    //return n;
+}
+
+template<class a>
+void guardar(a tipo[],int &n,string nombre,int size){
+    int contadorg = 0;
+    ofstream archivo("data/" + nombre+".dat",ios::trunc|ios::binary);
+    do{
+        archivo.write((char*)&tipo[contadorg],size);
+        contadorg = contadorg+1;
+    }while(contadorg <= n);
+    archivo.close();
+}
+
 
 int main(){
+    //caratula();
     // Declaracion de los objetos
     Postulante PPos[100];
     Asignatura AAsi[100];
@@ -27,18 +55,25 @@ int main(){
     // variables temporales
     int nEstudiante,temp2;
     char codigotemp[7],passtemp[20];
-    
+
     // Declaracion de Contadores
     int contP=0,contA=0,contEsc=0,contF=0,contEst=0;
-    //Declaracion de archivos fstream
-    fstream archivoFactuldad, archivoEscuela, archivoPostulante, archivoEstudiante;
+    
+    // abrir archivos y recolectar datos
+    leer(FFacu,contF,"Facultades",sizeFacultad);
+    leer(EEsc,contEsc,"Escuelas",sizeEscuela);
+    leer(PPos,contP,"Postulantes",sizePostulante);
+    leer(AAsi,contA,"Asignaturas",sizeAsignatura);
+    leer(EEstu,contEst,"Estudiantes",sizeEstudiante);
     
     string titulomenu,opcionesEstu[] = {"Realizar Matricula", "Ver Horario" , "Ver info"};
     string opcionesmenu[] = {"Estudiante" , "Postulante","Visualizar","Administrador","Salir"};
     string menuVisu[] = {"Facultades", "Escuelas", "Resultados de Examenes","Volver"};
+    string visu[] = {"Facultades", "Escuelas" , "Asignaturas", "Estudiantes" , "Postulantes", "Volver"};
     string contrasenia,tempEstudiante;
     bool NoSalir = true; // para salir del bucle del menu
     int seleccion,seleccion2;
+
     system("cls");
     do{
         //MessageBox(0,"¿Guardar cambios?", "Título", MB_YESNO | MB_ICONQUESTION);
@@ -88,6 +123,7 @@ int main(){
                             gotoxy(45,20);
                             break;
                     }
+    
                 }else{
                     cout<<"Incorrecto... Volviendo a Menu Principal";
                     Sleep(500); cout<<".";
@@ -97,15 +133,39 @@ int main(){
                 break;
             case 2:
                 // 2 opciones buscar por nombre y la otra ver lista completa
+                system("cls");
+                cuadro();
+                gotoxy(45,17);
+                cout<<"Postulante: VERIFICAR INGRESO";
+                gotoxy(27,19);
+                cout<<"Codigo de Postulante";Pequecuadro(47,18);
+                gotoxy(48,19);
+                fflush(stdin);cin.getline(codigotemp,7);
+                temp2 = Buscar(PPos,contP,codigotemp);
+                if(temp2 != 0){
+                    PPos[temp2].
+                }
                 break;
             case 3:
                 // se usara para mostrar datos generales de las escuelas y facultades
                 seleccion2 = Menu(titulomenu,menuVisu,4);
+                system("cls");
+                cuadro();
+                gotoxy(45,17);
                 switch(seleccion2){
                     case 1:
+                        cout<<"Facultades: ";
+                        Lista(FFacu,contF);
                         break;
+                    case 2:
+                        cout<<"Escuelas: ";
+                        Lista(EEsc,contEsc);
+                    case 3:
+                        cout<<"Asignaturas: ";
+                        
                 }
                 break;
+                
             case 4: // Para administrador
                 system("cls");
                 cuadro();
@@ -135,6 +195,11 @@ int main(){
                 break;
         }
     }while(NoSalir);
+    guardar(FFacu,contF,"Facultades",sizeFacultad);
+    guardar(EEsc,contEsc,"Escuelas",sizeEscuela);
+    guardar(PPos,contP,"Postulantes",sizePostulante);
+    guardar(AAsi,contA,"Asignaturas",sizeAsignatura);
+    guardar(EEstu,contEst,"Estudiantes",sizeEstudiante);
 }
 
 void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante estu[],Postulante postu[],int &F,int &Esc, int &A,int &Est,int &P){
@@ -142,7 +207,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
     system("cls");
     bool seguir();
     // Variables Temporales
-    char nombre[20],apellido[30],codigo[7],pass[15],SSiglas[5],Docentes[3][40];
+    char nombre[40],apellido[30],codigo[7],pass[15],SSiglas[5],Docentes[3][40];
     float puntaje;
     int nDocentes,vacantes;
     int temp,temp2;
@@ -336,6 +401,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     Facu[F].crearEscuela(escu,Esc);
                     break;
                 case 2: // agregar escuelas - DESARROLLADO
+                    system("cls");
                     nFacu = MenuEF("Crear Escuela: SELECCION FACULTAD", Facu,F);
                     Facu[nFacu].crearEscuela(escu,Esc);
                     break;
@@ -353,7 +419,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     cout<<"N° Docentes:";Pequecuadro(47,25);
                     // ingresar datos
                     gotoxy(48,20);
-                    fflush(stdin);cin.getline(nombre,20);
+                    fflush(stdin);cin.getline(nombre,40);
                     gotoxy(48,23);
                     fflush(stdin);cin.getline(codigo,7);
                     gotoxy(48,26);

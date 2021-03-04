@@ -10,6 +10,7 @@ class Postulante: public DatosPersona
         int nOrden;
         float puntaje;
         bool ingreso;
+        int pos;
     public:
         Postulante();
         //Postulante(char* n,char* c,char *S,char* a,char* Ca,float p);
@@ -21,5 +22,6 @@ class Postulante: public DatosPersona
 
 };
 
+int sizePostulante =sizeof(Postulante);
 #include"Postulante.cpp"
 #endif // POSTULANTE_H

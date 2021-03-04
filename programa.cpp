@@ -365,7 +365,6 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                             cuadro(); 
                             gotoxy(55,17); cout<<"MODIFICAR ESTUDIANTE";
                             gotoxy(40,20);
-                            //archivoEstudiante.open("Estudiantes",ios::out||ios::binary);
                             cout<<"Nombre:";Pequecuadro(47,19);
                             gotoxy(37,23);
                             cout<<"Apellidos:"; Pequecuadro(47,22);

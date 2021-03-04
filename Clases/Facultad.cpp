@@ -29,11 +29,11 @@ void Facultad::crearEscuela(Escuela E[], int &contE){
     contE = contE+1;
     char nombre[60],Siglas[5];
     int numVac;
-    cout<<"Nombre:";
+    cout<<"Nombre: ";
     fflush(stdin);cin.getline(nombre,60);
-    cout<<"Numero de vacantes";
+    cout<<"Numero de vacantes: ";
     cin>>numVac;
-    cout<<"SIGLAS (4 Caracteres)";
+    cout<<"SIGLAS (4 Caracteres): ";
     fflush(stdin);cin.getline(Siglas,5);
     nEscuelas = nEscuelas +1;
     escuelas[nEscuelas] = new Escuela;

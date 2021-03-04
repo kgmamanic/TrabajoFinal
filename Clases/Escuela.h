@@ -6,13 +6,15 @@ class Escuela
 {
     private:
         char Nombre[60];
-        Asignatura *asignaturas[20];
-        int nCursos;
+        //Asignatura *asignaturas[20];
+        //int nCursos;
         int nEstudiantes;
         Estudiante *Estudi[20];
         int nVacantes;
         char Siglas[5];
     public:
+        Asignatura *asignaturas[20];
+        int nCursos;
         Escuela(){}
         char* getNombre();
         void AgregarAsi(Asignatura *Asi);

@@ -30,3 +30,7 @@ bool Postulante:: operator<(Postulante P){
 float Postulante::getPunt(){
     return puntaje;
 }
+void Postulante::asignarOrden(int numero, bool ing){
+    nOrden = numero;
+    ingreso = ing;
+}

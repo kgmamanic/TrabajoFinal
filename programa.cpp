@@ -54,7 +54,7 @@ int main(){
     Estudiante EEstu[100];
     // variables temporales
     int nEstudiante,temp2;
-    char codigotemp[7],passtemp[20];
+    char codigotemp[7],passtemp[20],nuevoEstu;
 
     // Declaracion de Contadores
     int contP=0,contA=0,contEsc=0,contF=0,contEst=0;
@@ -70,7 +70,7 @@ int main(){
     string opcionesmenu[] = {"Estudiante" , "Postulante","Visualizar","Administrador","Salir"};
     string menuVisu[] = {"Facultades", "Escuelas", "Resultados de Examenes","Volver"};
     string visu[] = {"Facultades", "Escuelas" , "Asignaturas", "Estudiantes" , "Postulantes", "Volver"};
-    string contrasenia,tempEstudiante;
+    string contrasenia,tempEstudiante,tempCodigo;
     bool NoSalir = true; // para salir del bucle del menu
     int seleccion,seleccion2;
 
@@ -121,6 +121,13 @@ int main(){
                             gotoxy(45,19);
                             cout<<"Nombre: "<<EEstu[nEstudiante].getNombre();
                             gotoxy(45,20);
+                            cout<<"Apellidos: "<<EEstu[nEstudiante].getApe();
+                            gotoxy(45,21);
+                            cout<<"Codigo: "<<EEstu[nEstudiante].getCod();
+                            gotoxy(45,22);
+                            cout<<"Escuela"<<EEstu[nEstudiante].obtenerSiglas();
+                            gotoxy(38,25);
+                            system("pause");
                             break;
                     }
     
@@ -132,7 +139,7 @@ int main(){
                 }
                 break;
             case 2:
-                // 2 opciones buscar por nombre y la otra ver lista completa
+                // 2 opciones buscar por nombre 
                 system("cls");
                 cuadro();
                 gotoxy(45,17);
@@ -143,12 +150,54 @@ int main(){
                 fflush(stdin);cin.getline(codigotemp,7);
                 temp2 = Buscar(PPos,contP,codigotemp);
                 if(temp2 != 0){
-                    PPos[temp2].
+                    if(PPos[temp2].Ingresante()){
+                        gotoxy(40,22);
+                        cout<<"Felicidades...Ingresaste, Puntaje: "<<PPos[temp2].getPunt();
+                        Sleep(3000);
+                        system("cls");
+                        cuadro();
+                        gotoxy(45,17);
+                        cout<<"Sus datos seran estos.!";
+                        gotoxy(40,20);
+                        cout<<"Nombre:";Pequecuadro(47,19);
+                        gotoxy(37,23);
+                        cout<<"Apellidos:"; Pequecuadro(47,22);
+                        gotoxy(28,26);
+                        cout<<"Codigo:(Ejm 20-001):";Pequecuadro(47,25);
+                        gotoxy(36,29);
+                        cout<<"Contrase\244a:";Pequecuadro(47,28);
+                        contEst = contEst +1;
+                        // ingresar datos
+                        gotoxy(48,20);
+                        cout<<PPos[temp2].getNombre();
+                        gotoxy(48,23);
+                        cout<<PPos[temp2].getApe();
+                        gotoxy(48,26);
+                        tempEstudiante = "";
+                        tempEstudiante.append("20-");
+                        tempEstudiante.append(to_string(contEst));
+                        cout<<PPos[temp2].getCod();
+                        gotoxy(48,29);
+                        fflush(stdin); cin.getline(passtemp,20);
+                        for(int j = 1; j <= contEsc; j++){
+                            if(PPos[temp2].obtenerSiglas()== EEsc[j].getSiglas()){
+                                nuevoEstu = j;
+                                j = contEsc+1;
+                            }
+                        }
+                        EEstu[contEst].asignarDatos(PPos[temp2].getNombre(),PPos[temp2].getApe(),PPos[temp2].getCod(),EEsc[nuevoEstu].getSiglas(),passtemp);
+                        gotoxy(40,31);
+                        system("pause");
+                    }
+                }else{
+                    gotoxy(42,22);
+                    cout<<"ERROR... VERIFIQUE EL CODIGO";
+                    Sleep(2000);
                 }
                 break;
             case 3:
                 // se usara para mostrar datos generales de las escuelas y facultades
-                seleccion2 = Menu(titulomenu,menuVisu,4);
+                seleccion2 = Menu(titulomenu,visu,4);
                 system("cls");
                 cuadro();
                 gotoxy(45,17);
@@ -160,9 +209,20 @@ int main(){
                     case 2:
                         cout<<"Escuelas: ";
                         Lista(EEsc,contEsc);
+                        break;
                     case 3:
-                        cout<<"Asignaturas: ";
-                        
+                        temp2 = MenuEF("Seleccione Una escuela",EEsc,contEsc);
+                        system("cls");
+                        cuadro();
+                        gotoxy(45,17);
+                        cout<<"Asignaturas";
+                        for(int i = 1; i <= EEsc[temp2].nCursos;i++){
+                            gotoxy(45,18+i);
+                            cout<<EEsc[temp2].asignaturas[i]->getNombre();
+                        }
+                        gotoxy(45,35);
+                        system("pause");
+                        break;
                 }
                 break;
                 
@@ -441,13 +501,13 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     A = A+1;
                     temp2 = MenuEF("Seleccion la escuela",escu,Esc);
                     asig[A].asignarDatos(nombre,codigo,Docentes,nDocentes,&escu[temp2]);
+                    escu[temp2].AgregarAsi(&asig[A]);
                     break;
-                case 4: // Agregar Estudiante - FALTA
+                case 4: // Agregar Estudiante 
                     system("cls");
                     cuadro(); 
                     gotoxy(55,17); cout<<"AGREGAR ESTUDIANTE";
                     gotoxy(40,20);
-                    //archivoEstudiante.open("Estudiantes",ios::out||ios::binary);
                     cout<<"Nombre:";Pequecuadro(47,19);
                     gotoxy(37,23);
                     cout<<"Apellidos:"; Pequecuadro(47,22);
@@ -464,7 +524,6 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     fflush(stdin); cin.getline(codigo,7);
                     gotoxy(48,29);
                     fflush(stdin); cin.getline(pass,20);
-                    // Seleccionar Escuela todavia
                     system("cls");
                     nSEscuela = MenuEF("Seleccione la Escuela",escu,Esc);
                     Est = Est +1;
@@ -488,7 +547,6 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     gotoxy(48,23);
                     fflush(stdin); cin.getline(apellido,30); // apellidos
                     gotoxy(48,26);
-                    //strcat(codigo,"AAA");
                     fflush(stdin); cin.getline(codigo,sizeof(codigo));
                     gotoxy(48,29);
                     fflush(stdin); cin>>puntaje;
@@ -497,6 +555,12 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     postu[P].asignarDatos(nombre,codigo,escu[temp].getSiglas(),apellido,puntaje);
                     // Ordena los postulantes
                     quickshortDes(postu,P);
+                    temp2 = Puesto(postu,postu[P],P);
+                    if(escu[temp].getVacantes()>= temp2){
+                        postu[P].asignarOrden(temp2,true);
+                    }else{
+                        postu[P].asignarOrden(temp2,false);
+                    }
                     break;
             }
             break;

@@ -250,90 +250,80 @@ void modificar(char* atrib){
 }
 
 
-void caratula();
+
 void cuadrado();
 void triangulo();
 void triangulo2();
 
-/* int main(){
-    triangulo2();
-    triangulo();
-    catarula();
-    cout<<endl<<endl<<endl;
-
-    return 0;
-} */
-
 void caratula(){
+    system("cls");
+    ModCursor(FALSE);
+    cuadro();
     triangulo2();
     triangulo();
     cuadrado();
-    system("pause");
+    Sleep(3000);
+    ModCursor(TRUE);
     system("cls");
 } 
 
 void triangulo(){
-    gotoxy(1,12);cout<<"\262\262\262\262\262\262\262\262\262";
-    gotoxy(3,13);cout<<"\262\262\262\262\262\262\262";
-    gotoxy(5,14);cout<<"\262\262\262\262\262";
-    gotoxy(7,15);cout<<"\262\262\262";
+    ModCursor(FALSE);
+    gotoxy(1+40,12+8);cout<<"\262\262\262\262\262\262\262\262\262";
+    gotoxy(3+40,13+8);cout<<"\262\262\262\262\262\262\262";
+    gotoxy(5+40,14+8);cout<<"\262\262\262\262\262";
+    gotoxy(7+40,15+8);cout<<"\262\262\262";
 //.......               
-    gotoxy(11,17);cout<<"\262\262\262\262\262\262\262\262\262"; 
-    gotoxy(13,18);cout<<"\262\262\262\262\262\262\262";
-    gotoxy(15,19);cout<<"\262\262\262\262\262";
-    gotoxy(17,20);cout<<"\262\262\262";
+    gotoxy(11+40,17+8);cout<<"\262\262\262\262\262\262\262\262\262"; 
+    gotoxy(13+40,18+8);cout<<"\262\262\262\262\262\262\262";
+    gotoxy(15+40,19+8);cout<<"\262\262\262\262\262";
+    gotoxy(17+40,20+8);cout<<"\262\262\262";
 //----------
-    gotoxy(21,7);cout<<"\262\262\262\262\262\262\262\262\262"; 
-    gotoxy(23,8);cout<<"\262\262\262\262\262\262\262";
-    gotoxy(25,9);cout<<"\262\262\262\262\262";
-    gotoxy(27,10);cout<<"\262\262\262";
-    gotoxy(29,11);cout<<"\262";
+    gotoxy(21+40,7+8);cout<<"\262\262\262\262\262\262\262\262\262"; 
+    gotoxy(23+40,8+8);cout<<"\262\262\262\262\262\262\262";
+    gotoxy(25+40,9+8);cout<<"\262\262\262\262\262";
+    gotoxy(27+40,10+8);cout<<"\262\262\262";
+    gotoxy(29+40,11+8);cout<<"\262";
 }
 
 void triangulo2(){
-    gotoxy(9,11);cout<<"\262\262\262\262\262\262\262\262\262"; 
-    gotoxy(9,10);cout<<"\262\262\262\262\262\262\262";
-    gotoxy(9,9);cout<<"\262\262\262\262\262";
-    gotoxy(9,8);cout<<"\262\262\262";
+    ModCursor(FALSE);
+    gotoxy(9+40,11+8);cout<<"\262\262\262\262\262\262\262\262\262"; 
+    gotoxy(9+40,10+8);cout<<"\262\262\262\262\262\262\262";
+    gotoxy(9+40,9+8);cout<<"\262\262\262\262\262";
+    gotoxy(9+40,8+8);cout<<"\262\262\262";
     //..........
-    gotoxy(18,16);cout<<"\262\262\262\262\262\262\262\262\262"; 
-    gotoxy(18,15);cout<<"\262\262\262\262\262\262\262";
-    gotoxy(18,14);cout<<"\262\262\262\262\262";
-    gotoxy(18,13);cout<<"\262\262\262";
+    gotoxy(18+40,16+8);cout<<"\262\262\262\262\262\262\262\262\262"; 
+    gotoxy(18+40,15+8);cout<<"\262\262\262\262\262\262\262";
+    gotoxy(18+40,14+8);cout<<"\262\262\262\262\262";
+    gotoxy(18+40,13+8);cout<<"\262\262\262";
     //.........
-    gotoxy(1,21);cout<<"\262\262\262\262\262\262\262\262\262"; 
-    gotoxy(1,20);cout<<"\262\262\262\262\262\262\262";
-    gotoxy(1,19);cout<<"\262\262\262\262\262";
-    gotoxy(1,18);cout<<"\262\262\262";
-    gotoxy(1,17);cout<<"\262";
+    gotoxy(1+40,21+8);cout<<"\262\262\262\262\262\262\262\262\262"; 
+    gotoxy(1+40,20+8);cout<<"\262\262\262\262\262\262\262";
+    gotoxy(1+40,19+8);cout<<"\262\262\262\262\262";
+    gotoxy(1+40,18+8);cout<<"\262\262\262";
+    gotoxy(1+40,17+8);cout<<"\262";
 
 }
-/* void triangulo(){
-    gotoxy();
-} */
+
 void cuadrado(){
     //CUADRADO
+    ModCursor(FALSE);
     for(int i=1;i<10;i++){                     // cantidad de asteriscos
         for(int j=7;j<12;j++){               //cantidad filas
-            gotoxy(i,j);cout<<"\262";
+            gotoxy(i+40,j+8);cout<<"\262";
         }
     }
     //CUADRADO DEL MEDIO
     for(int i=10;i<20;i++){                     // cantidad de asteriscos
         for(int j=12;j<17;j++){               //cantidad filas
-            gotoxy(i,j);cout<<"\262";
+            gotoxy(i+40,j+8);cout<<"\262";
         }
     }
      //CUADRADO DEL ABAJO
     for(int i=20;i<30;i++){                     // cantidad de asteriscos
         for(int j=17;j<22;j++){               //cantidad filas
-            gotoxy(i,j);cout<<"\262";
+            gotoxy(i+40,j+8);cout<<"\262";
         }
     }
-//g++ -o CARATULA2.exe CARATULA2.cpp.
-
-/* for(int i=1;i<15;i++){                     // cantidad de asteriscos
-        for(int j=7;j<13;j++){               //cantidad filas
-            gotoxy(i,j);cout<<"*";
-        }*/
     } 

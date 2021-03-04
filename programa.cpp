@@ -17,14 +17,8 @@ using namespace std;
 // Recibe como parametros los contadores de cada clase
 void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante estu[],Postulante postu[],int &F,int &Esc, int &A,int &Est,int &P);
 
-struct horario{ // 0 = 7, 1 = 8, 2 = 9, 3 = 10, 4 = 11, 
-    string lunes[6];
-    string martes[6];
-    string miercoles[6];
-    string jueves[6];
-    string viernes[6];
-};
-
+// horario // 0 = 7, 1 = 8, 2 = 9, 3 = 10, 4 = 11, 
+    
 template<class a>
 void leer(a tipo[],int &contador,string nombre,int size){
     int cantidad;
@@ -54,7 +48,7 @@ void guardar(a tipo[],int n,string nombre,int size){
 
 
 int main(){
-    //caratula();
+    caratula();
     // Declaracion de los objetos
     Postulante PPos[100];
     Asignatura AAsi[100];
@@ -264,6 +258,7 @@ int main(){
     guardar(PPos,contP,"Postulantes",sizePostulante);
     guardar(AAsi,contA,"Asignaturas",sizeAsignatura);
     guardar(EEstu,contEst,"Estudiantes",sizeEstudiante);
+    system("cls");
 }
 
 void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante estu[],Postulante postu[],int &F,int &Esc, int &A,int &Est,int &P){

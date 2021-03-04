@@ -3,14 +3,8 @@
 
 Estudiante::Estudiante()
 {
-    /*
-    strcpy(apellidos,"sin apellido");
-    strcpy(asignatura,"sin asignatura")
-    nCursos=0;
-    nMatricula=0;
 
-    */
-    //ctor
+    strcpy(contrasena, "•◘◘");
 }
 void Estudiante::asignarDatos(char* n,char* a,char* c, char* S, char* contra){
     asigDatos(n,a,c,S);

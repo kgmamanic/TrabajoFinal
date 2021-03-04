@@ -17,6 +17,14 @@ using namespace std;
 // Recibe como parametros los contadores de cada clase
 void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante estu[],Postulante postu[],int &F,int &Esc, int &A,int &Est,int &P);
 
+struct horario{ // 0 = 7, 1 = 8, 2 = 9, 3 = 10, 4 = 11, 
+    string lunes[6];
+    string martes[6];
+    string miercoles[6];
+    string jueves[6];
+    string viernes[6];
+};
+
 template<class a>
 void leer(a tipo[],int &contador,string nombre,int size){
     int cantidad;
@@ -29,13 +37,11 @@ void leer(a tipo[],int &contador,string nombre,int size){
         }
     }while(cantidad == size);
     archivo.close();
-    //contador = contador -1;
-    //return n;
 }
 
 template<class a>
-void guardar(a tipo[],int &n,string nombre,int size){
-    int contadorg = 0;
+void guardar(a tipo[],int n,string nombre,int size){
+    int contadorg = 1;
     ofstream archivo("data/" + nombre+".dat",ios::trunc|ios::binary);
     do{
         archivo.write((char*)&tipo[contadorg],size);
@@ -174,9 +180,9 @@ int main(){
                         gotoxy(48,23);
                         cout<<PPos[temp2].getApe();
                         gotoxy(48,26);
-                        tempEstudiante = "";
-                        tempEstudiante.append("20-");
-                        tempEstudiante.append(to_string(contEst));
+                        //tempEstudiante = "";
+                        //tempEstudiante.append("20-");
+                        //tempEstudiante.append(to_string(contEst));
                         cout<<PPos[temp2].getCod();
                         gotoxy(48,29);
                         fflush(stdin); cin.getline(passtemp,20);

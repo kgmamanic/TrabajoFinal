@@ -6,8 +6,6 @@ class Escuela
 {
     private:
         char Nombre[60];
-        //Asignatura *asignaturas[20];
-        //int nCursos;
         int nEstudiantes;
         Estudiante *Estudi[20];
         int nVacantes;

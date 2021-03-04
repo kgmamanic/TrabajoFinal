@@ -8,7 +8,6 @@ class Estudiante: public DatosPersona
 {
     public:
         Estudiante();
-        //Estudiante(char* n,char* a,char* c, char* S, char* contra);
         void agregarCursos(Asignatura *Asig);
         char* getcontrasena();
         void agreMatricula(int );

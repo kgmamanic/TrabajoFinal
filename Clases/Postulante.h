@@ -19,6 +19,7 @@ class Postulante: public DatosPersona
         void asignarDatos(char* n,char* c,char *S,char* a,float p);
         float getPunt();
         void asignarOrden(int,bool);
+        int getOrden();
 
 };
 

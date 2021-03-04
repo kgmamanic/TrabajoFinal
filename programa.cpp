@@ -28,6 +28,7 @@ struct horario{ // 0 = 7, 1 = 8, 2 = 9, 3 = 10, 4 = 11,
 template<class a>
 void leer(a tipo[],int &contador,string nombre,int size){
     int cantidad;
+    contador = 1;
     ifstream archivo("data/" + nombre+".dat",ios::binary);
     do{
         archivo.read((char*)&tipo[contador],size);
@@ -37,6 +38,7 @@ void leer(a tipo[],int &contador,string nombre,int size){
         }
     }while(cantidad == size);
     archivo.close();
+    contador = contador -1;
 }
 
 template<class a>
@@ -60,8 +62,8 @@ int main(){
     Facultad FFacu[100];
     Estudiante EEstu[100];
     // variables temporales
-    int nEstudiante,temp2;
-    char codigotemp[7],passtemp[20],nuevoEstu;
+    int nEstudiante,temp2,nuevoEstu;
+    char codigotemp[7],passtemp[20];
 
     // Declaracion de Contadores
     int contP=0,contA=0,contEsc=0,contF=0,contEst=0;
@@ -180,24 +182,19 @@ int main(){
                         gotoxy(48,23);
                         cout<<PPos[temp2].getApe();
                         gotoxy(48,26);
-                        //tempEstudiante = "";
-                        //tempEstudiante.append("20-");
-                        //tempEstudiante.append(to_string(contEst));
                         cout<<PPos[temp2].getCod();
                         gotoxy(48,29);
                         fflush(stdin); cin.getline(passtemp,20);
-                        for(int j = 1; j <= contEsc; j++){
-                            if(PPos[temp2].obtenerSiglas()== EEsc[j].getSiglas()){
-                                nuevoEstu = j;
-                                j = contEsc+1;
-                            }
-                        }
-                        EEstu[contEst].asignarDatos(PPos[temp2].getNombre(),PPos[temp2].getApe(),PPos[temp2].getCod(),EEsc[nuevoEstu].getSiglas(),passtemp);
+                        EEstu[contEst].asignarDatos(PPos[temp2].getNombre(),PPos[temp2].getApe(),PPos[temp2].getCod(),PPos[temp2].obtenerSiglas(),passtemp);
                         gotoxy(40,31);
                         system("pause");
+                    }else{
+                        gotoxy(40,22);
+                        cout<<"No ingresaste... Puntaje: "<<PPos[temp2].getPunt()<<" Puesto: "<<PPos[temp2].getOrden();
+                        Sleep(2000);
                     }
                 }else{
-                    gotoxy(42,22);
+                    gotoxy(40,22);
                     cout<<"ERROR... VERIFIQUE EL CODIGO";
                     Sleep(2000);
                 }
@@ -558,7 +555,6 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                     temp = MenuEF("Seleccion a que escuela postula",escu,Esc); // eliminar 
                     postu[P].asignarDatos(nombre,codigo,escu[temp].getSiglas(),apellido,puntaje);
                     // Ordena los postulantes
-                    quickshortDes(postu,P);
                     temp2 = Puesto(postu,postu[P],P);
                     if(escu[temp].getVacantes()>= temp2){
                         postu[P].asignarOrden(temp2,true);
@@ -566,6 +562,7 @@ void administrador(Facultad Facu[],Escuela escu[],Asignatura asig[],Estudiante e
                         postu[P].asignarOrden(temp2,false);
                     }
                     break;
+                    quickshortDes(postu,P);
             }
             break;
         default: return;

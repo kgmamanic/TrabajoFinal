@@ -12,7 +12,11 @@ void Postulante::asignarDatos(char* n,char* c,char* S,char* a,float p){
 
 // Se usara para saber si algun postulante ingreso o no
 bool Postulante::Ingresante(){
-    return ingreso; // 
+    if(ingreso){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 void Postulante::mostrar(){
@@ -33,4 +37,8 @@ float Postulante::getPunt(){
 void Postulante::asignarOrden(int numero, bool ing){
     nOrden = numero;
     ingreso = ing;
+}
+
+int Postulante::getOrden(){
+    return nOrden;
 }
